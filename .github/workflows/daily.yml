@@ -1,8 +1,8 @@
-﻿name: NVDA Daily Brief
+name: NVDA Daily Brief And Alerts
 
 on:
   schedule:
-    - cron: '*/20 * * * *'
+    - cron: "*/20 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
@@ -30,10 +30,16 @@ jobs:
           SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
           FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
-          SEND_HOUR: '7'
-          SEND_MINUTE: '30'
-          SEND_WINDOW_MINUTES: '10'
-          SUBJECT_PREFIX: 'NVDA 每日简报'
+          SYMBOL: "NVDA"
+          SEND_HOUR: "7"
+          SEND_MINUTE: "30"
+          SEND_WINDOW_MINUTES: "10"
+          ENABLE_ENTRY_ALERTS: "true"
+          ALERT_COOLDOWN_HOURS: "12"
+          ALERT_SCORE_THRESHOLD: "65"
+          SOCIAL_SENTIMENT_THRESHOLD: "0.15"
+          INTRADAY_INTERVAL: "30m"
+          SUBJECT_PREFIX: "NVDA 每日简报"
         run: |
           python report.py
 
