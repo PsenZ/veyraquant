@@ -1,24 +1,53 @@
 {
-  "date": "2026-03-03",
-  "sent_at": "2026-03-03T07:33:21.928573+11:00",
   "alerts": {
-    "pullback_add": {
-      "sent_at": "2026-04-10T00:16:34.561674+10:00",
-      "meta": {
-        "score": 65,
-        "headline": "NVDA 趋势回踩加仓信号"
+    "NVDA": {
+      "breakout_entry": {
+        "meta": {
+          "headline": "NVDA 突破型入场信号",
+          "score": 70
+        },
+        "sent_at": "2026-04-14T00:09:57.155444+10:00"
+      },
+      "pullback_add": {
+        "meta": {
+          "headline": "NVDA 趋势回踩加仓信号",
+          "score": 65
+        },
+        "sent_at": "2026-04-10T00:16:34.561674+10:00"
       }
     },
-    "breakout_entry": {
-      "sent_at": "2026-04-14T00:09:57.155444+10:00",
-      "meta": {
-        "score": 70,
-        "headline": "NVDA 突破型入场信号"
+    "QQQ": {
+      "breakout_entry": {
+        "plan": {
+          "entry_zone": "$645.79 - $648.44",
+          "max_loss_pct": 0.33,
+          "position_pct": 10.0,
+          "stop": "$625.94",
+          "targets": "$678.88 / $700.06"
+        },
+        "score": 97,
+        "sent_at": "2026-04-21T03:39:11.728267+10:00",
+        "signal_hash": "fb2b799e67fe"
+      }
+    },
+    "SMH": {
+      "breakout_entry": {
+        "plan": {
+          "entry_zone": "$461.88 - $464.88",
+          "max_loss_pct": 0.5,
+          "position_pct": 9.65,
+          "stop": "$439.37",
+          "targets": "$499.39 / $523.40"
+        },
+        "score": 100,
+        "sent_at": "2026-04-21T03:39:11.728267+10:00",
+        "signal_hash": "abc8a580bbac"
       }
     }
   },
   "daily": {
     "date": "2026-04-20",
     "sent_at": "2026-04-20T07:35:47.396374+10:00"
-  }
+  },
+  "version": 2
 }
