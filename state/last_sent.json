@@ -1,17 +1,45 @@
 {
   "alerts": {
+    "AMD": {
+      "breakout_entry": {
+        "plan": {
+          "entry_zone": "$281.15 - $283.73",
+          "max_loss_pct": 0.5,
+          "position_pct": 6.84,
+          "stop": "$261.78",
+          "targets": "$313.43 / $334.08"
+        },
+        "score": 100,
+        "sent_at": "2026-04-22T00:10:29.747798+10:00",
+        "signal_hash": "c5de9a14da59"
+      }
+    },
+    "MSFT": {
+      "breakout_entry": {
+        "plan": {
+          "entry_zone": "$424.78 - $427.17",
+          "max_loss_pct": 0.45,
+          "position_pct": 10.0,
+          "stop": "$406.86",
+          "targets": "$454.64 / $473.76"
+        },
+        "score": 93,
+        "sent_at": "2026-04-22T00:10:29.747798+10:00",
+        "signal_hash": "42cda0aa6c7f"
+      }
+    },
     "NVDA": {
       "breakout_entry": {
         "plan": {
-          "entry_zone": "$202.09 - $203.35",
-          "max_loss_pct": 0.5,
-          "position_pct": 9.99,
-          "stop": "$192.58",
-          "targets": "$217.93 / $228.08"
+          "entry_zone": "$201.93 - $203.14",
+          "max_loss_pct": 0.48,
+          "position_pct": 10.0,
+          "stop": "$192.84",
+          "targets": "$217.08 / $226.78"
         },
-        "score": 89,
-        "sent_at": "2026-04-21T05:58:08.165102+10:00",
-        "signal_hash": "f6fcd2b6c184"
+        "score": 88,
+        "sent_at": "2026-04-22T00:10:29.747798+10:00",
+        "signal_hash": "9f87ad2099c5"
       },
       "pullback_add": {
         "meta": {
@@ -24,29 +52,29 @@
     "QQQ": {
       "breakout_entry": {
         "plan": {
-          "entry_zone": "$645.79 - $648.44",
-          "max_loss_pct": 0.33,
+          "entry_zone": "$649.54 - $652.06",
+          "max_loss_pct": 0.31,
           "position_pct": 10.0,
-          "stop": "$625.94",
-          "targets": "$678.88 / $700.06"
+          "stop": "$630.65",
+          "targets": "$681.02 / $701.17"
         },
-        "score": 97,
-        "sent_at": "2026-04-21T03:39:11.728267+10:00",
-        "signal_hash": "fb2b799e67fe"
+        "score": 98,
+        "sent_at": "2026-04-22T00:10:29.747798+10:00",
+        "signal_hash": "170eccecb9cd"
       }
     },
     "SMH": {
       "breakout_entry": {
         "plan": {
-          "entry_zone": "$461.88 - $464.88",
-          "max_loss_pct": 0.5,
-          "position_pct": 9.65,
-          "stop": "$439.37",
-          "targets": "$499.39 / $523.40"
+          "entry_zone": "$467.90 - $470.77",
+          "max_loss_pct": 0.49,
+          "position_pct": 10.0,
+          "stop": "$446.40",
+          "targets": "$503.73 / $526.66"
         },
-        "score": 100,
-        "sent_at": "2026-04-21T03:39:11.728267+10:00",
-        "signal_hash": "abc8a580bbac"
+        "score": 86,
+        "sent_at": "2026-04-22T00:10:29.747798+10:00",
+        "signal_hash": "8bcca25ad94c"
       }
     }
   },
