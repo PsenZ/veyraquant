@@ -76,6 +76,20 @@
         "sent_at": "2026-04-22T00:10:29.747798+10:00",
         "signal_hash": "8bcca25ad94c"
       }
+    },
+    "TSLA": {
+      "pullback_add": {
+        "plan": {
+          "entry_zone": "$365.99 - $373.41",
+          "max_loss_pct": 0.22,
+          "position_pct": 2.74,
+          "stop": "$339.99",
+          "targets": "$414.26 / $443.97"
+        },
+        "score": 91,
+        "sent_at": "2026-04-23T00:54:29.361538+10:00",
+        "signal_hash": "9fcad8b50af5"
+      }
     }
   },
   "daily": {
