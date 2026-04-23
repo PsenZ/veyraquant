@@ -1,5 +1,19 @@
 {
   "alerts": {
+    "AAPL": {
+      "pullback_add": {
+        "plan": {
+          "entry_zone": "$258.93 - $261.94",
+          "max_loss_pct": 0.46,
+          "position_pct": 10.0,
+          "stop": "$248.43",
+          "targets": "$278.44 / $290.44"
+        },
+        "score": 100,
+        "sent_at": "2026-04-24T03:16:15.312499+10:00",
+        "signal_hash": "c49ed4a43917"
+      }
+    },
     "AMD": {
       "breakout_entry": {
         "plan": {
