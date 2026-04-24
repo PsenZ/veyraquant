@@ -3,15 +3,15 @@
     "AAPL": {
       "pullback_add": {
         "plan": {
-          "entry_zone": "$258.93 - $261.94",
-          "max_loss_pct": 0.46,
+          "entry_zone": "$259.99 - $262.92",
+          "max_loss_pct": 0.45,
           "position_pct": 10.0,
-          "stop": "$248.43",
-          "targets": "$278.44 / $290.44"
+          "stop": "$249.76",
+          "targets": "$279.00 / $290.70"
         },
         "score": 100,
-        "sent_at": "2026-04-24T03:16:15.312499+10:00",
-        "signal_hash": "c49ed4a43917"
+        "sent_at": "2026-04-25T00:43:18.588611+10:00",
+        "signal_hash": "bcdaed18dac2"
       }
     },
     "AMD": {
@@ -94,15 +94,15 @@
     "TSLA": {
       "pullback_add": {
         "plan": {
-          "entry_zone": "$365.58 - $373.06",
+          "entry_zone": "$365.34 - $372.80",
           "max_loss_pct": 0.5,
-          "position_pct": 6.17,
-          "stop": "$339.40",
-          "targets": "$414.20 / $444.11"
+          "position_pct": 6.18,
+          "stop": "$339.20",
+          "targets": "$413.88 / $443.75"
         },
         "score": 100,
-        "sent_at": "2026-04-23T23:48:14.351184+10:00",
-        "signal_hash": "eeca68d5fb2c"
+        "sent_at": "2026-04-25T00:43:18.588611+10:00",
+        "signal_hash": "2b8aedbfd894"
       }
     }
   },
