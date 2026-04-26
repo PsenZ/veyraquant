@@ -17,6 +17,41 @@ from .models import (
     TradePlan,
 )
 from .risk import portfolio_heat_cap, position_size_pct
+from .validator import validate_trade_plan
+
+
+ACTIONABLE_ACTIONS = {"BUY_TRIGGER", "ADD_TRIGGER"}
+ACTION_TO_SIGNAL_TYPE = {
+    "BUY_TRIGGER": "突破入场",
+    "ADD_TRIGGER": "趋势回踩加仓",
+    "WATCH": "持有观察",
+    "RISK_REDUCE": "减仓/风险升高",
+    "WAIT": "禁止交易/等待",
+    "REJECT": "禁止交易/等待",
+}
+ACTION_TO_ALERT_KIND = {
+    "BUY_TRIGGER": "breakout_entry",
+    "ADD_TRIGGER": "pullback_add",
+    "WATCH": "hold_watch",
+    "RISK_REDUCE": "risk_reduce",
+    "WAIT": "wait",
+    "REJECT": "wait",
+}
+ACTION_TO_PLAN_KIND = {
+    "BUY_TRIGGER": "buy",
+    "ADD_TRIGGER": "add",
+    "WATCH": "watch",
+    "RISK_REDUCE": "reduce",
+    "WAIT": "wait",
+    "REJECT": "reject",
+}
+SETUP_TO_ACTION = {
+    "breakout_entry": "BUY_TRIGGER",
+    "pullback_add": "ADD_TRIGGER",
+    "hold_watch": "WATCH",
+    "risk_reduce": "RISK_REDUCE",
+    "wait": "WAIT",
+}
 
 
 def tech_summary(hist: pd.DataFrame) -> TechSnapshot:
@@ -125,11 +160,21 @@ def analyze_symbol(
 ) -> SignalResult:
     warnings = list(warnings or [])
     if daily is None or daily.empty or len(daily) < 60:
-        plan = TradePlan("等待数据恢复", "NA", "NA", 0.0, 0.0, 0.0, "无", "数据不足")
+        plan = _non_actionable_plan(
+            plan_kind="wait",
+            entry_zone="等待数据恢复",
+            trigger="无",
+            cancel="数据不足",
+        )
         return _result(
             rank=0,
             symbol=symbol,
+            setup_type="data_unavailable",
             signal_type="禁止交易/等待",
+            action="WAIT",
+            is_actionable=False,
+            suppressed_by=["insufficient_daily_data"],
+            plan_kind="wait",
             score=0,
             market_regime=market.label,
             plan=plan,
@@ -148,20 +193,40 @@ def analyze_symbol(
     raw_score = sum(contributions.values())
     score = int(max(0, min(100, round(raw_score))))
 
-    signal_type, alert_kind = choose_signal_type(tech, intraday_data, score, market, news, config)
-    plan = build_trade_plan(signal_type, tech, config)
-    if plan.rr < config.min_rr and plan.position_pct > 0:
-        risks.append(f"盈亏比 {plan.rr:.2f} 低于最低要求 {config.min_rr:.2f}")
-        if signal_type in {"突破入场", "趋势回踩加仓"}:
-            signal_type = "持有观察"
-            alert_kind = "hold_watch"
+    setup_type = classify_setup(tech, intraday_data, score, config)
+    action, suppressed_by = apply_action_policy(setup_type, score, market, news, config)
+    if action in ACTIONABLE_ACTIONS:
+        preview_plan = preview_trade_plan(action, tech, config)
+        if preview_plan.rr < config.min_rr and preview_plan.position_pct > 0:
+            risks.append(f"盈亏比 {preview_plan.rr:.2f} 低于最低要求 {config.min_rr:.2f}")
+            suppressed_by.append("rr_below_min")
+            action = "WATCH"
 
-    if signal_type in {"突破入场", "趋势回踩加仓"} and news.social_sentiment.get("score", 0.0) <= -max(
-        config.social_sentiment_threshold, 0.2
-    ):
-        risks.append("舆情链路偏空，触发利空过滤，买入信号降级为等待")
-        signal_type = "禁止交易/等待"
-        alert_kind = "wait"
+    signal_type = ACTION_TO_SIGNAL_TYPE[action]
+    alert_kind = ACTION_TO_ALERT_KIND[action]
+    plan_kind = ACTION_TO_PLAN_KIND[action]
+    is_actionable = action in ACTIONABLE_ACTIONS
+    plan = build_trade_plan(action, tech, config)
+    rejection_reasons: list[str] = []
+    if is_actionable:
+        validation = validate_trade_plan(plan, config)
+        if validation.warnings:
+            risks.extend(validation.warnings)
+        if not validation.is_valid:
+            rejection_reasons = list(validation.errors)
+            risks.extend(validation.errors)
+            suppressed_by.append("trade_plan_validation_failed")
+            action = "REJECT"
+            signal_type = ACTION_TO_SIGNAL_TYPE[action]
+            alert_kind = ACTION_TO_ALERT_KIND[action]
+            plan_kind = ACTION_TO_PLAN_KIND[action]
+            is_actionable = False
+            plan = _non_actionable_plan(
+                plan_kind="reject",
+                entry_zone="交易计划校验失败，不执行买入计划",
+                trigger="等待计划参数恢复有效后再评估",
+                cancel="无",
+            )
 
     if warnings:
         risks.extend(warnings[:3])
@@ -169,7 +234,12 @@ def analyze_symbol(
     return _result(
         rank=0,
         symbol=symbol,
+        setup_type=setup_type,
         signal_type=signal_type,
+        action=action,
+        is_actionable=is_actionable,
+        suppressed_by=suppressed_by,
+        plan_kind=plan_kind,
         score=score,
         market_regime=market.label,
         plan=plan,
@@ -179,6 +249,7 @@ def analyze_symbol(
         alert_kind=alert_kind,
         last_price=tech.values["last"],
         warnings=warnings,
+        rejection_reasons=rejection_reasons,
     )
 
 
@@ -358,6 +429,22 @@ def choose_signal_type(
     news: NewsBundle,
     config: AppConfig,
 ) -> tuple[str, str]:
+    setup_type = classify_setup(tech, intraday, score, config)
+    action, suppressed_by = apply_action_policy(setup_type, score, market, news, config)
+    if action in ACTIONABLE_ACTIONS:
+        preview_plan = preview_trade_plan(action, tech, config)
+        if preview_plan.rr < config.min_rr and preview_plan.position_pct > 0:
+            suppressed_by.append("rr_below_min")
+            action = "WATCH"
+    return ACTION_TO_SIGNAL_TYPE[action], ACTION_TO_ALERT_KIND[action]
+
+
+def classify_setup(
+    tech: TechSnapshot,
+    intraday: Optional[dict[str, float]],
+    score: int,
+    config: AppConfig,
+) -> str:
     t = tech.values
     ma_stack = t["sma5"] >= t["sma10"] >= t["sma20"]
     breakout = (
@@ -380,53 +467,92 @@ def choose_signal_type(
         and intraday["price"] >= intraday["high_13"] * 0.998
         and intraday["vol_ratio"] >= 2.0
     )
-    negative_news = news.social_sentiment.get("score", 0.0) <= -max(config.social_sentiment_threshold, 0.2)
-
-    if market.label == "风险规避" and score < config.alert_score_threshold + 5:
-        return "禁止交易/等待", "wait"
-    if negative_news and score < config.alert_score_threshold + 10:
-        return "禁止交易/等待", "wait"
     if score >= config.alert_score_threshold and (breakout or intraday_breakout):
-        return "突破入场", "breakout_entry"
+        return "breakout_entry"
     if score >= config.alert_score_threshold - 5 and pullback:
-        return "趋势回踩加仓", "pullback_add"
+        return "pullback_add"
     if score >= 55:
-        return "持有观察", "hold_watch"
+        return "hold_watch"
     if score <= 40 or t["rsi14"] > 74:
-        return "减仓/风险升高", "risk_reduce"
-    return "禁止交易/等待", "wait"
+        return "risk_reduce"
+    return "wait"
 
 
-def build_trade_plan(signal_type: str, tech: TechSnapshot, config: AppConfig) -> TradePlan:
+def apply_action_policy(
+    setup_type: str,
+    score: int,
+    market: MarketContext,
+    news: NewsBundle,
+    config: AppConfig,
+) -> tuple[str, list[str]]:
+    action = SETUP_TO_ACTION[setup_type]
+    suppressed_by: list[str] = []
+
+    if action in ACTIONABLE_ACTIONS and market.label == "风险规避" and score < config.alert_score_threshold + 5:
+        suppressed_by.append("market_risk_off")
+        return "WAIT", suppressed_by
+
+    negative_news = news.social_sentiment.get("score", 0.0) <= -max(
+        config.social_sentiment_threshold, 0.2
+    )
+    if action in ACTIONABLE_ACTIONS and negative_news and score < config.alert_score_threshold + 10:
+        suppressed_by.append("negative_news_veto")
+        return "REJECT", suppressed_by
+
+    return action, suppressed_by
+
+
+def preview_trade_plan(action: str, tech: TechSnapshot, config: AppConfig) -> TradePlan:
+    return _build_trade_plan(action, tech, config)
+
+
+def build_trade_plan(action: str, tech: TechSnapshot, config: AppConfig) -> TradePlan:
+    return _build_trade_plan(action, tech, config)
+
+
+def _build_trade_plan(action: str, tech: TechSnapshot, config: AppConfig) -> TradePlan:
     t = tech.values
     last = t["last"]
     atr14 = max(t["atr14"], last * 0.01)
 
-    if signal_type == "突破入场":
+    if action == "BUY_TRIGGER":
         entry_low = last
         entry_high = last + 0.25 * atr14
         trigger = "日线收盘维持 20 日高点附近，盘中量比不低于 1.1"
         cancel = "收盘跌回 SMA20 下方或市场过滤转为风险规避"
-    elif signal_type == "趋势回踩加仓":
+    elif action == "ADD_TRIGGER":
         entry_low = max(0.01, t["sma20"] - 0.25 * atr14)
         entry_high = t["sma20"] + 0.25 * atr14
         trigger = "价格回踩 SMA20 附近后企稳，RSI 不跌破 42"
         cancel = "收盘跌破 SMA20 且 MACD 柱体继续走弱"
-    elif signal_type == "持有观察":
-        entry_low = min(last, t["sma20"])
-        entry_high = last
-        trigger = "已有仓位可按计划持有，新仓等待突破或回踩确认"
-        cancel = "跌破 SMA20 或市场风险快速升高"
-    elif signal_type == "减仓/风险升高":
-        entry_low = last
-        entry_high = last
-        trigger = "控制风险为主，避免新增仓位"
-        cancel = "重新站上 SMA20 且评分恢复到 55 以上"
+    elif action == "WATCH":
+        return _non_actionable_plan(
+            plan_kind="watch",
+            entry_zone="观察为主，不新增仓位",
+            trigger="等待突破或回踩重新确认后再评估",
+            cancel="跌破关键均线或评分继续走弱",
+        )
+    elif action == "RISK_REDUCE":
+        return _non_actionable_plan(
+            plan_kind="reduce",
+            entry_zone="以减仓控风险为主",
+            trigger="控制风险，避免新增仓位",
+            cancel="重新站上关键均线且评分恢复",
+        )
+    elif action == "REJECT":
+        return _non_actionable_plan(
+            plan_kind="reject",
+            entry_zone="信号被否决，不执行买入计划",
+            trigger="等待否决条件消退后再重新评估",
+            cancel="无",
+        )
     else:
-        entry_low = last
-        entry_high = last
-        trigger = "等待更清晰的趋势、量能或市场环境确认"
-        cancel = "无"
+        return _non_actionable_plan(
+            plan_kind="wait",
+            entry_zone="等待更清晰的趋势或市场确认",
+            trigger="等待更清晰的趋势、量能或市场环境确认",
+            cancel="无",
+        )
 
     entry_mid = (entry_low + entry_high) / 2
     stop = max(0.01, entry_mid - config.atr_stop_multiplier * atr14)
@@ -435,7 +561,6 @@ def build_trade_plan(signal_type: str, tech: TechSnapshot, config: AppConfig) ->
     target2 = entry_mid + max(config.min_rr + 1.0, 2.5) * risk_per_share
     rr = (target1 - entry_mid) / (risk_per_share + 1e-9)
 
-    actionable = signal_type in {"突破入场", "趋势回踩加仓", "持有观察"}
     sizing = position_size_pct(
         entry_mid,
         stop,
@@ -443,21 +568,18 @@ def build_trade_plan(signal_type: str, tech: TechSnapshot, config: AppConfig) ->
         config.max_position_pct,
         config.account_equity,
     )
-    position_pct = sizing.position_pct if actionable else 0.0
-    max_loss_pct = sizing.max_loss_pct if actionable else 0.0
-    position_value = sizing.position_value if actionable else None
 
     return TradePlan(
         entry_zone=f"${entry_low:.2f} - ${entry_high:.2f}",
         stop=f"${stop:.2f}",
         targets=f"${target1:.2f} / ${target2:.2f}",
-        position_pct=position_pct,
-        max_loss_pct=max_loss_pct,
+        position_pct=sizing.position_pct,
+        max_loss_pct=sizing.max_loss_pct,
         rr=round(rr, 2),
         trigger=trigger,
         cancel=cancel,
         account_equity=config.account_equity,
-        position_value=position_value,
+        position_value=sizing.position_value,
     )
 
 
@@ -471,6 +593,8 @@ def assign_ranks(results: list[SignalResult]) -> list[SignalResult]:
 def enforce_portfolio_heat(results: list[SignalResult], max_heat_pct: float) -> list[SignalResult]:
     heat_left = max_heat_pct
     for result in results:
+        if not result.is_actionable:
+            continue
         if result.max_loss_pct <= 0 or result.position_pct <= 0:
             continue
         new_position, new_loss = portfolio_heat_cap(
@@ -500,7 +624,12 @@ def _snapshot_perf(market: MarketContext, symbol: str) -> float:
 def _result(
     rank: int,
     symbol: str,
+    setup_type: str,
     signal_type: str,
+    action: str,
+    is_actionable: bool,
+    suppressed_by: list[str],
+    plan_kind: str,
     score: int,
     market_regime: str,
     plan: TradePlan,
@@ -510,13 +639,19 @@ def _result(
     alert_kind: str,
     last_price: Optional[float],
     warnings: Optional[list[str]] = None,
+    rejection_reasons: Optional[list[str]] = None,
 ) -> SignalResult:
-    hash_input = f"{symbol}|{signal_type}|{score}|{plan.entry_zone}|{plan.stop}|{plan.targets}"
+    hash_input = f"{symbol}|{action}|{score}|{plan.entry_zone}|{plan.stop}|{plan.targets}"
     signal_hash = hashlib.sha1(hash_input.encode("utf-8")).hexdigest()[:12]
     return SignalResult(
         rank=rank,
         symbol=symbol,
+        setup_type=setup_type,
         signal_type=signal_type,
+        action=action,
+        is_actionable=is_actionable,
+        suppressed_by=suppressed_by,
+        plan_kind=plan_kind,
         score=score,
         market_regime=market_regime,
         entry_zone=plan.entry_zone,
@@ -532,4 +667,25 @@ def _result(
         signal_hash=signal_hash,
         last_price=last_price,
         warnings=warnings or [],
+        rejection_reasons=rejection_reasons or [],
+    )
+
+
+def _non_actionable_plan(
+    plan_kind: str,
+    entry_zone: str,
+    trigger: str,
+    cancel: str,
+) -> TradePlan:
+    return TradePlan(
+        entry_zone=entry_zone,
+        stop="NA",
+        targets="NA",
+        position_pct=0.0,
+        max_loss_pct=0.0,
+        rr=0.0,
+        trigger=trigger,
+        cancel=cancel,
+        account_equity=None,
+        position_value=None,
     )

@@ -95,3 +95,9 @@ class SignalResult:
     signal_hash: str
     last_price: Optional[float]
     warnings: list[str] = field(default_factory=list)
+    rejection_reasons: list[str] = field(default_factory=list)
+    setup_type: str = ""
+    action: str = "WAIT"
+    is_actionable: bool = False
+    suppressed_by: list[str] = field(default_factory=list)
+    plan_kind: str = "wait"

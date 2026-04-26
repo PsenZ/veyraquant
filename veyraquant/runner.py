@@ -6,28 +6,32 @@ from .models import SymbolData
 from .reporting import compose_alert_email, compose_daily_report
 from .signals import analyze_symbol, assign_ranks, enforce_portfolio_heat
 from .state import (
-    alert_in_cooldown,
     already_sent_daily,
     mark_alert_sent,
     mark_daily_sent,
     read_state,
+    should_send_alert,
     write_state,
 )
-from .timeutils import daily_report_due, is_regular_us_market_hours, now_sydney, now_us_eastern
+from .timeutils import US_EASTERN_TZ, daily_report_due, is_regular_us_market_hours, now_sydney
 
 
 def run(config: AppConfig | None = None) -> int:
     config = config or AppConfig.from_env()
     now_dt = now_sydney()
+    now_dt_et = now_dt.astimezone(US_EASTERN_TZ)
     state = read_state(config.state_path)
     daily_due = config.force_daily_report or (
         daily_report_due(now_dt, config.send_hour, config.send_minute, config.send_window_minutes)
         and not already_sent_daily(state, now_dt)
     )
-    alerts_due = config.entry_alerts_enabled and is_regular_us_market_hours(now_us_eastern())
+    alerts_due = (
+        (config.entry_alerts_enabled or getattr(config, "risk_alerts_enabled", False))
+        and is_regular_us_market_hours(now_dt_et)
+    )
     if not daily_due and not alerts_due:
         print("Daily report skipped: before send threshold or already sent today.")
-        print("Entry alerts skipped: outside regular US market hours or disabled.")
+        print("Entry and risk alerts skipped: outside regular US market hours or disabled.")
         print("Nothing sent; state unchanged.")
         return 0
 
@@ -110,24 +114,32 @@ def maybe_send_daily_report(state, now_dt, results, market, config: AppConfig) -
 
 
 def maybe_send_entry_alerts(state, now_dt, results, config: AppConfig) -> bool:
-    if not config.entry_alerts_enabled:
-        print("Entry alerts disabled.")
+    if not config.entry_alerts_enabled and not getattr(config, "risk_alerts_enabled", False):
+        print("Entry and risk alerts disabled.")
         return False
-    if not is_regular_us_market_hours(now_us_eastern()):
-        print("Entry alerts skipped: outside regular US market hours.")
+    now_dt_et = now_dt.astimezone(US_EASTERN_TZ)
+    if not is_regular_us_market_hours(now_dt_et):
+        print("Entry and risk alerts skipped: outside regular US market hours.")
         return False
 
     sent_any = False
     for result in results:
-        if not _should_alert(result, config):
+        alert_channel = _alert_channel(result, config)
+        if not alert_channel:
             continue
-        if alert_in_cooldown(
-            state, result.symbol, result.alert_kind, now_dt, config.alert_cooldown_hours
-        ):
+        should_send, reason = should_send_alert(
+            state,
+            result.symbol,
+            result.alert_kind,
+            now_dt,
+            config.alert_cooldown_hours,
+            getattr(result, "signal_hash", None),
+        )
+        if not should_send:
             print(f"Alert skipped due to cooldown: {result.symbol} {result.alert_kind}")
             continue
 
-        subject, body = compose_alert_email(result, now_dt)
+        subject, body = _compose_alert_message(result, now_dt, alert_channel)
         if config.dry_run:
             print(subject)
             print(body)
@@ -149,10 +161,12 @@ def maybe_send_entry_alerts(state, now_dt, results, config: AppConfig) -> bool:
                     "position_pct": result.position_pct,
                     "max_loss_pct": result.max_loss_pct,
                 },
+                "reason": reason,
+                "channel": alert_channel,
             },
         )
         sent_any = True
-        print(f"Alert sent: {result.symbol} {result.alert_kind}")
+        print(f"Alert sent: {result.symbol} {result.alert_kind} ({reason})")
 
     if not sent_any:
         print("No alert sent.")
@@ -160,8 +174,47 @@ def maybe_send_entry_alerts(state, now_dt, results, config: AppConfig) -> bool:
 
 
 def _should_alert(result, config: AppConfig) -> bool:
+    return bool(_alert_channel(result, config))
+
+
+def _alert_channel(result, config: AppConfig) -> str | None:
+    if not getattr(result, "is_actionable", False):
+        if getattr(config, "risk_alerts_enabled", False) and getattr(result, "action", "") == "RISK_REDUCE":
+            return "risk"
+        return None
     if result.alert_kind in {"breakout_entry", "pullback_add"}:
-        return result.score >= config.alert_score_threshold
-    if result.alert_kind == "risk_reduce":
-        return result.score <= 40
-    return False
+        if getattr(config, "entry_alerts_enabled", True) and result.score >= config.alert_score_threshold:
+            return "entry"
+    if getattr(config, "risk_alerts_enabled", False) and getattr(result, "action", "") == "RISK_REDUCE":
+        return "risk"
+    return None
+
+
+def _compose_alert_message(result, now_dt, alert_channel: str) -> tuple[str, str]:
+    if alert_channel == "entry":
+        return compose_alert_email(result, now_dt)
+    return _compose_risk_alert_email(result, now_dt)
+
+
+def _compose_risk_alert_email(result, now_dt) -> tuple[str, str]:
+    dual_time = now_dt.astimezone(US_EASTERN_TZ)
+    subject = f"{result.symbol} 风险提醒 - score {result.score}"
+    lines = [
+        f"{result.symbol} 风险提醒 (Sydney {now_dt.strftime('%Y-%m-%d %H:%M')} / US Eastern {dual_time.strftime('%Y-%m-%d %H:%M')})",
+        "",
+        f"rank: {getattr(result, 'rank', 0)}",
+        f"symbol: {result.symbol}",
+        f"action: {getattr(result, 'action', 'RISK_REDUCE')}",
+        f"signal_type: {result.signal_type}",
+        f"score: {result.score}",
+        f"market_regime: {result.market_regime}",
+        "",
+        "[reasons]",
+        *[f"- {line}" for line in (result.reasons or ["No reason provided."])[:4]],
+        "",
+        "[risks]",
+        *[f"- {line}" for line in (result.risks or ["No major risk note."])[:4]],
+        "",
+        "No buy/add trade plan is attached to this risk alert.",
+    ]
+    return subject, "\n".join(lines)

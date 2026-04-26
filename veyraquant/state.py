@@ -78,6 +78,32 @@ def alert_in_cooldown(
     return now_dt - sent_at < timedelta(hours=cooldown_hours)
 
 
+def should_send_alert(
+    state: dict[str, Any],
+    symbol: str,
+    alert_kind: str,
+    now_dt: datetime,
+    cooldown_hours: int,
+    signal_hash: str | None = None,
+) -> tuple[bool, str]:
+    alert_state = state.get("alerts", {}).get(symbol, {}).get(alert_kind)
+    if not alert_state:
+        return True, "new_alert"
+
+    previous_hash = alert_state.get("signal_hash")
+    if signal_hash and previous_hash and signal_hash != previous_hash:
+        return True, "signal_changed"
+
+    try:
+        sent_at = datetime.fromisoformat(alert_state["sent_at"])
+    except Exception:
+        return True, "invalid_history"
+
+    if now_dt - sent_at >= timedelta(hours=cooldown_hours):
+        return True, "cooldown_elapsed"
+    return False, "cooldown_active"
+
+
 def mark_alert_sent(
     state: dict[str, Any],
     symbol: str,

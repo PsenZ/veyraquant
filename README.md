@@ -79,6 +79,8 @@ position_pct: 6.40%
 max_loss_pct: 0.50%
 ```
 
+只有最终 `actionable` 的结果才会保留完整买入型交易计划。`持有观察`、`禁止交易/等待`、`减仓/风险升高` 和被 validator 否决的结果不会再伪装成可执行买入计划。
+
 ### 4.1 当前策略框架
 
 当前系统更接近“纪律化趋势波段策略助手”，核心逻辑是：
@@ -106,6 +108,15 @@ VeyraQuant 默认采用保守风险参数：
 
 仓位不是拍脑袋给出的。系统会根据入场价、止损距离、单笔风险预算和组合风险上限计算建议仓位。
 
+在生成 actionable 交易计划后，系统还会做一层计划校验：
+
+- RR 必须不低于 `MIN_RR`
+- 仓位不得超过 `MAX_POSITION_PCT`
+- 最大亏损占比不得超过 `RISK_PER_TRADE_PCT`
+- 过宽的 entry zone 会先给 warning，再对明显异常区间做 reject
+
+这层校验只用于阻止无效交易计划进入结果对象，不会新增交易策略或改写原有市场信号逻辑。
+
 ### 6. 自动邮件简报与提醒
 
 系统支持两类输出：
@@ -115,6 +126,18 @@ VeyraQuant 默认采用保守风险参数：
 - 机会提醒：在美股正常交易时段内，如果信号达到阈值，发送入场、加仓或风险提醒
 
 每类提醒都有冷却机制，避免同一信号反复刷屏。
+
+当前日报已经重组为更接近交易台晨会的结构：
+
+- `Today Conclusion`
+- `Market Filter`
+- `Action List`
+- `Hold / Watch`
+- `Avoid Chase / Risk Reduce`
+- `Rejected Plans`
+- `System Notes`
+
+其中只有 `BUY_TRIGGER` / `ADD_TRIGGER` 且 `is_actionable=True` 的结果会进入 `Action List`。其余结果只按观察、回避、拒绝或风控状态展示，不展示成可执行买入计划。
 
 ### 7. 免费数据优先，支持降级
 
@@ -138,6 +161,7 @@ veyraquant/
   market.py       # 市场环境过滤
   signals.py      # 信号评分与交易计划
   risk.py         # 仓位与组合风险控制
+  validator.py    # actionable 交易计划有效性校验
   reporting.py    # 日报与提醒内容
   state.py        # 状态记录与迁移
   backtest.py     # 简易回测框架
@@ -201,6 +225,8 @@ MAX_POSITION_PCT=10
 PORTFOLIO_HEAT_MAX_PCT=3
 ATR_STOP_MULTIPLIER=2.0
 MIN_RR=1.5
+MAX_ENTRY_ZONE_WIDTH_WARN_PCT=3.0
+MAX_ENTRY_ZONE_WIDTH_REJECT_PCT=6.0
 ```
 
 `ACCOUNT_EQUITY` 是可选项。如果不设置，系统只输出百分比仓位，不输出具体金额。

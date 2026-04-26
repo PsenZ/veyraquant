@@ -64,6 +64,9 @@ class AppConfig:
     force_daily_report: bool
     dry_run: bool
     smtp: SmtpConfig
+    risk_alerts_enabled: bool = False
+    max_entry_zone_width_warn_pct: float = 3.0
+    max_entry_zone_width_reject_pct: float = 6.0
 
     @classmethod
     def from_env(cls) -> "AppConfig":
@@ -89,6 +92,7 @@ class AppConfig:
             cache_dir=os.getenv("CACHE_DIR", os.path.join(".cache", "veyraquant")),
             subject_prefix=os.getenv("SUBJECT_PREFIX", subject_default),
             entry_alerts_enabled=_bool_env("ENABLE_ENTRY_ALERTS", True),
+            risk_alerts_enabled=_bool_env("ENABLE_RISK_ALERTS", False),
             alert_cooldown_hours=_int_env("ALERT_COOLDOWN_HOURS", 12),
             alert_score_threshold=_int_env("ALERT_SCORE_THRESHOLD", 65),
             social_sentiment_threshold=_float_env("SOCIAL_SENTIMENT_THRESHOLD", 0.15),
@@ -109,4 +113,6 @@ class AppConfig:
                 from_email=os.getenv("FROM_EMAIL"),
                 to_email=os.getenv("TO_EMAIL"),
             ),
+            max_entry_zone_width_warn_pct=_float_env("MAX_ENTRY_ZONE_WIDTH_WARN_PCT", 3.0),
+            max_entry_zone_width_reject_pct=_float_env("MAX_ENTRY_ZONE_WIDTH_REJECT_PCT", 6.0),
         )

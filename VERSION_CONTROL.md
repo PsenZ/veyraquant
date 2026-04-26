@@ -2,9 +2,9 @@
 
 ## Current Version
 
-- Version: `2.3.1`
-- Date: `2026-04-20`
-- Status: Added manual force-send support for daily briefs
+- Version: `2.4.0`
+- Date: `2026-04-26`
+- Status: Added trade-plan validation and upgraded daily briefs into a trading decision format
 
 ## Versioning Rules
 
@@ -13,6 +13,15 @@
 - `PATCH`: bug fix, test improvement, copy update, or operational hardening with no decision-model change.
 
 ## Changelog
+
+### 2.4.0
+
+- Fixed signal/result consistency so the final action is decided before a buy-side trade plan is attached.
+- Ensured non-actionable results no longer retain executable entry zones, targets, position sizing, or portfolio-heat consumption.
+- Added actionable trade-plan validation with explicit rejection reasons for invalid entry, stop, target, RR, sizing, and max-loss combinations.
+- Added configurable entry-zone width warning and rejection thresholds with `MAX_ENTRY_ZONE_WIDTH_WARN_PCT` and `MAX_ENTRY_ZONE_WIDTH_REJECT_PCT`.
+- Rebuilt the daily brief into a trading decision format with `Today Conclusion`, `Market Filter`, `Action List`, `Hold / Watch`, `Avoid Chase / Risk Reduce`, `Rejected Plans`, and `System Notes`.
+- Centralized reporting helper logic so warning extraction and avoid-chase text heuristics are no longer scattered across the report body.
 
 ### 2.3.1
 
