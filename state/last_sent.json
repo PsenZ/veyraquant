@@ -247,23 +247,24 @@
       },
       "pullback_add": {
         "channel": "entry",
+        "identity_hash": "cfd54fa59aef",
         "plan": {
-          "entry_zone": "$396.22 - $405.60",
+          "entry_zone": "$348.35 - $355.75",
           "max_loss_pct": 0.5,
-          "position_pct": 5.34,
-          "stop": "$363.39",
-          "targets": "$457.20 / $494.72"
+          "position_pct": 5.94,
+          "stop": "$322.44",
+          "targets": "$396.47 / $426.08"
         },
-        "reason": "signal_changed",
-        "score": 100,
-        "sent_at": "2026-07-11T04:47:45.488370+10:00",
-        "signal_hash": "0751eb6eaa18"
+        "reason": "signal_materially_changed",
+        "score": 97,
+        "sent_at": "2026-09-10T08:42:25.211198+10:00",
+        "signal_hash": "fdea98e412c5"
       }
     }
   },
   "daily": {
-    "date": "2026-09-09",
-    "sent_at": "2026-09-09T08:55:33.409345+10:00"
+    "date": "2026-09-10",
+    "sent_at": "2026-09-10T08:42:25.211198+10:00"
   },
   "version": 2
 }

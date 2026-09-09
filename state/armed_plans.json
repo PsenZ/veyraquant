@@ -17,6 +17,24 @@
       "target1": 547.9109,
       "target2": 592.929,
       "triggered_at": null
+    },
+    {
+      "created_date": "2026-09-09",
+      "entry_high": 355.755,
+      "entry_low": 348.352,
+      "expires_date": "2026-09-11",
+      "max_loss_pct": 0.5,
+      "note": "Approved as the best-ranked auto growth setup within risk budget.",
+      "plan_kind": "add",
+      "position_pct": 5.94,
+      "score": 97,
+      "setup_type": "pullback_add",
+      "status": "armed",
+      "stop_price": 322.4418,
+      "symbol": "TSLA",
+      "target1": 396.471,
+      "target2": 426.0827,
+      "triggered_at": null
     }
   ],
   "version": 1
