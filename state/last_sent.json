@@ -249,22 +249,22 @@
         "channel": "entry",
         "identity_hash": "cfd54fa59aef",
         "plan": {
-          "entry_zone": "$348.35 - $355.75",
+          "entry_zone": "$350.19 - $357.52",
           "max_loss_pct": 0.5,
-          "position_pct": 5.94,
-          "stop": "$322.44",
-          "targets": "$396.47 / $426.08"
+          "position_pct": 6.04,
+          "stop": "$324.55",
+          "targets": "$397.82 / $427.13"
         },
         "reason": "signal_materially_changed",
-        "score": 97,
-        "sent_at": "2026-09-10T08:42:25.211198+10:00",
-        "signal_hash": "fdea98e412c5"
+        "score": 81,
+        "sent_at": "2026-09-11T08:44:14.668785+10:00",
+        "signal_hash": "4b49ece68216"
       }
     }
   },
   "daily": {
-    "date": "2026-09-10",
-    "sent_at": "2026-09-10T08:42:25.211198+10:00"
+    "date": "2026-09-11",
+    "sent_at": "2026-09-11T08:44:14.668785+10:00"
   },
   "version": 2
 }
