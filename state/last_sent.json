@@ -111,16 +111,16 @@
         "channel": "entry",
         "identity_hash": "3549302341f4",
         "plan": {
-          "entry_zone": "$10.76 - $10.92",
+          "entry_zone": "$11.13 - $11.25",
           "max_loss_pct": 0.5,
-          "position_pct": 4.34,
-          "stop": "$9.59",
-          "targets": "$12.71 / $13.96"
+          "position_pct": 5.9,
+          "stop": "$10.24",
+          "targets": "$12.61 / $13.56"
         },
-        "reason": "new_alert",
-        "score": 100,
-        "sent_at": "2026-08-15T06:58:01.491677+10:00",
-        "signal_hash": "7f5f1aca1812"
+        "reason": "signal_materially_changed",
+        "score": 91,
+        "sent_at": "2026-09-12T08:44:28.765517+10:00",
+        "signal_hash": "6ae98faba664"
       },
       "pullback_add": {
         "channel": "entry",
@@ -229,6 +229,23 @@
         "signal_hash": "4ee8ebe01b96"
       }
     },
+    "SPCX": {
+      "breakout_entry": {
+        "channel": "entry",
+        "identity_hash": "dfac5b2ab495",
+        "plan": {
+          "entry_zone": "$151.21 - $153.17",
+          "max_loss_pct": 0.5,
+          "position_pct": 4.84,
+          "stop": "$136.48",
+          "targets": "$175.76 / $191.47"
+        },
+        "reason": "new_alert",
+        "score": 96,
+        "sent_at": "2026-09-12T08:44:28.765517+10:00",
+        "signal_hash": "2b88e9f07f30"
+      }
+    },
     "TSLA": {
       "breakout_entry": {
         "channel": "entry",
@@ -263,8 +280,8 @@
     }
   },
   "daily": {
-    "date": "2026-09-11",
-    "sent_at": "2026-09-11T08:44:14.668785+10:00"
+    "date": "2026-09-12",
+    "sent_at": "2026-09-12T08:44:28.765517+10:00"
   },
   "version": 2
 }

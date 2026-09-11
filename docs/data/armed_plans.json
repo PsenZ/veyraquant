@@ -35,6 +35,24 @@
    "target1": 396.471,
    "target2": 426.0827,
    "triggered_at": null
+  },
+  {
+   "created_date": "2026-09-11",
+   "entry_high": 153.174,
+   "entry_low": 151.21,
+   "expires_date": "2026-09-15",
+   "max_loss_pct": 0.5,
+   "note": "Approved as the best-ranked general setup within risk budget.",
+   "plan_kind": "buy",
+   "position_pct": 4.84,
+   "score": 96,
+   "setup_type": "breakout_entry",
+   "status": "armed",
+   "stop_price": 136.4804,
+   "symbol": "SPCX",
+   "target1": 175.7594,
+   "target2": 191.471,
+   "triggered_at": null
   }
  ]
 }
