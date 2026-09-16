@@ -1,24 +1,6 @@
 {
  "plans": [
   {
-   "created_date": "2026-09-07",
-   "entry_high": 483.1973,
-   "entry_low": 477.57,
-   "expires_date": "2026-09-09",
-   "max_loss_pct": 0.5,
-   "note": "Approved as the best-ranked semiconductor setup within risk budget.",
-   "plan_kind": "buy",
-   "position_pct": 5.34,
-   "score": 100,
-   "setup_type": "breakout_entry",
-   "status": "armed",
-   "stop_price": 435.3655,
-   "symbol": "AMD",
-   "target1": 547.9109,
-   "target2": 592.929,
-   "triggered_at": null
-  },
-  {
    "created_date": "2026-09-09",
    "entry_high": 355.755,
    "entry_low": 348.352,
@@ -29,7 +11,7 @@
    "position_pct": 5.94,
    "score": 97,
    "setup_type": "pullback_add",
-   "status": "armed",
+   "status": "expired",
    "stop_price": 322.4418,
    "symbol": "TSLA",
    "target1": 396.471,
@@ -47,7 +29,7 @@
    "position_pct": 4.84,
    "score": 92,
    "setup_type": "breakout_entry",
-   "status": "armed",
+   "status": "expired",
    "stop_price": 136.4804,
    "symbol": "SPCX",
    "target1": 175.7594,
