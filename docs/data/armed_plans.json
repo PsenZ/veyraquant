@@ -1,24 +1,6 @@
 {
  "plans": [
   {
-   "created_date": "2026-09-09",
-   "entry_high": 355.755,
-   "entry_low": 348.352,
-   "expires_date": "2026-09-11",
-   "max_loss_pct": 0.5,
-   "note": "Approved as the best-ranked auto growth setup within risk budget.",
-   "plan_kind": "add",
-   "position_pct": 5.94,
-   "score": 97,
-   "setup_type": "pullback_add",
-   "status": "expired",
-   "stop_price": 322.4418,
-   "symbol": "TSLA",
-   "target1": 396.471,
-   "target2": 426.0827,
-   "triggered_at": null
-  },
-  {
    "created_date": "2026-09-13",
    "entry_high": 153.174,
    "entry_low": 151.21,
@@ -34,6 +16,24 @@
    "symbol": "SPCX",
    "target1": 175.7594,
    "target2": 191.471,
+   "triggered_at": null
+  },
+  {
+   "created_date": "2026-09-17",
+   "entry_high": 719.2923,
+   "entry_low": 716.92,
+   "expires_date": "2026-09-21",
+   "max_loss_pct": 0.26,
+   "note": "Approved as the best-ranked mega growth setup within risk budget.",
+   "plan_kind": "buy",
+   "position_pct": 10.0,
+   "score": 100,
+   "setup_type": "breakout_entry",
+   "status": "armed",
+   "stop_price": 699.1279,
+   "symbol": "QQQ",
+   "target1": 746.5735,
+   "target2": 765.5518,
    "triggered_at": null
   }
  ]

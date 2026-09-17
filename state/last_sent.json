@@ -171,17 +171,18 @@
     "QQQ": {
       "breakout_entry": {
         "channel": "entry",
+        "identity_hash": "bfa193009f2b",
         "plan": {
-          "entry_zone": "$736.40 - $740.49",
-          "max_loss_pct": 0.44,
+          "entry_zone": "$716.92 - $719.29",
+          "max_loss_pct": 0.26,
           "position_pct": 10.0,
-          "stop": "$705.75",
-          "targets": "$787.48 / $820.16"
+          "stop": "$699.13",
+          "targets": "$746.57 / $765.55"
         },
-        "reason": "signal_changed",
+        "reason": "signal_materially_changed",
         "score": 100,
-        "sent_at": "2026-07-01T16:22:41.177535+10:00",
-        "signal_hash": "4b625b8ce90f"
+        "sent_at": "2026-09-18T09:01:02.477898+10:00",
+        "signal_hash": "851f7f790451"
       },
       "pullback_add": {
         "channel": "entry",
@@ -280,8 +281,8 @@
     }
   },
   "daily": {
-    "date": "2026-09-17",
-    "sent_at": "2026-09-17T09:12:11.531461+10:00"
+    "date": "2026-09-18",
+    "sent_at": "2026-09-18T09:01:02.477898+10:00"
   },
   "version": 2
 }
