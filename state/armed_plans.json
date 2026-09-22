@@ -53,6 +53,24 @@
       "target1": 168.5198,
       "target2": 183.4806,
       "triggered_at": null
+    },
+    {
+      "created_date": "2026-09-22",
+      "entry_high": 10.9516,
+      "entry_low": 10.82,
+      "expires_date": "2026-09-24",
+      "max_loss_pct": 0.5,
+      "note": "Approved as the best-ranked general setup within risk budget.",
+      "plan_kind": "buy",
+      "position_pct": 5.17,
+      "score": 100,
+      "setup_type": "breakout_entry",
+      "status": "armed",
+      "stop_price": 9.8333,
+      "symbol": "NOK",
+      "target1": 12.4646,
+      "target2": 13.5171,
+      "triggered_at": null
     }
   ],
   "version": 1
