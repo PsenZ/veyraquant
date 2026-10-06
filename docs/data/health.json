@@ -1,11 +1,11 @@
 {
  "alerts_sent": 0,
  "cache_hit_rate_pct": 0.0,
- "data_fetch_seconds": 9.14,
- "duration_seconds": 15.16,
+ "data_fetch_seconds": 11.24,
+ "duration_seconds": 19.2,
  "email_sent": true,
  "export_ok": true,
- "finished_at": "2026-10-04T23:31:07.080004+00:00",
+ "finished_at": "2026-10-06T01:24:10.006632+00:00",
  "health_schema_version": 1,
  "intraday_heartbeat": {
   "checked_plans": 3,
@@ -16,22 +16,15 @@
   "started_at": "2026-07-12T14:40:03+00:00",
   "transitions": 1
  },
- "run_id": "2026-10-04T23:30:51.921135+00:00",
+ "run_id": "2026-10-06T01:23:50.804739+00:00",
  "run_kind": "daily",
- "started_at": "2026-10-04T23:30:51.921135+00:00",
+ "started_at": "2026-10-06T01:23:50.804739+00:00",
  "symbols": [
   {
    "data_quality_level": "HIGH",
    "intraday_freshness": "live",
    "price_freshness": "live",
-   "symbol": "QQQ",
-   "warnings": 0
-  },
-  {
-   "data_quality_level": "HIGH",
-   "intraday_freshness": "live",
-   "price_freshness": "live",
-   "symbol": "AMD",
+   "symbol": "INTC",
    "warnings": 0
   },
   {
@@ -45,14 +38,14 @@
    "data_quality_level": "HIGH",
    "intraday_freshness": "live",
    "price_freshness": "live",
-   "symbol": "INTC",
+   "symbol": "QQQ",
    "warnings": 0
   },
   {
    "data_quality_level": "HIGH",
    "intraday_freshness": "live",
    "price_freshness": "live",
-   "symbol": "NOK",
+   "symbol": "TSLA",
    "warnings": 0
   },
   {
@@ -66,7 +59,14 @@
    "data_quality_level": "HIGH",
    "intraday_freshness": "live",
    "price_freshness": "live",
-   "symbol": "TSLA",
+   "symbol": "AMD",
+   "warnings": 0
+  },
+  {
+   "data_quality_level": "HIGH",
+   "intraday_freshness": "live",
+   "price_freshness": "live",
+   "symbol": "NOK",
    "warnings": 0
   }
  ],

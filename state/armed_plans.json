@@ -1,24 +1,6 @@
 {
   "plans": [
     {
-      "created_date": "2026-09-27",
-      "entry_high": 10.4811,
-      "entry_low": 10.2389,
-      "expires_date": "2026-09-29",
-      "max_loss_pct": 0.5,
-      "note": "Approved as the best-ranked general setup within risk budget.",
-      "plan_kind": "add",
-      "position_pct": 5.35,
-      "score": 100,
-      "setup_type": "pullback_add",
-      "status": "expired",
-      "stop_price": 9.3911,
-      "symbol": "NOK",
-      "target1": 11.8133,
-      "target2": 12.7821,
-      "triggered_at": null
-    },
-    {
       "created_date": "2026-09-29",
       "entry_high": 740.3015,
       "entry_low": 737.93,

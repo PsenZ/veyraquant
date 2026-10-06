@@ -23523,10 +23523,14 @@
    "decision_id": "2026-10-01|AMD|ae60359df442",
    "five_day_return": null,
    "holding_days": 5,
-   "horizon_alphas": {},
-   "horizon_returns": {},
+   "horizon_alphas": {
+    "1": 0.022131
+   },
+   "horizon_returns": {
+    "1": 0.029526
+   },
    "market_regime": "中性震荡",
-   "outcome_status": "pending",
+   "outcome_status": "unresolved",
    "portfolio_decision": "watchlist",
    "portfolio_reason": "Not ready for execution today.",
    "rating": "Hold",
@@ -23560,10 +23564,14 @@
    "decision_id": "2026-10-01|MU|77271a6d49ac",
    "five_day_return": null,
    "holding_days": 5,
-   "horizon_alphas": {},
-   "horizon_returns": {},
+   "horizon_alphas": {
+    "1": -0.027899
+   },
+   "horizon_returns": {
+    "1": -0.020503
+   },
    "market_regime": "中性震荡",
-   "outcome_status": "pending",
+   "outcome_status": "unresolved",
    "portfolio_decision": "watchlist",
    "portfolio_reason": "Not ready for execution today.",
    "rating": "Hold",
@@ -23596,10 +23604,14 @@
    "decision_id": "2026-10-01|QQQ|01434a82cea0",
    "five_day_return": null,
    "holding_days": 5,
-   "horizon_alphas": {},
-   "horizon_returns": {},
+   "horizon_alphas": {
+    "1": 0.002779
+   },
+   "horizon_returns": {
+    "1": 0.010175
+   },
    "market_regime": "中性震荡",
-   "outcome_status": "pending",
+   "outcome_status": "unresolved",
    "portfolio_decision": "watchlist",
    "portfolio_reason": "Not ready for execution today.",
    "rating": "Hold",
@@ -23633,10 +23645,14 @@
    "decision_id": "2026-10-01|INTC|1c6774859e06",
    "five_day_return": null,
    "holding_days": 5,
-   "horizon_alphas": {},
-   "horizon_returns": {},
+   "horizon_alphas": {
+    "1": -0.012979
+   },
+   "horizon_returns": {
+    "1": -0.005583
+   },
    "market_regime": "中性震荡",
-   "outcome_status": "pending",
+   "outcome_status": "unresolved",
    "portfolio_decision": "watchlist",
    "portfolio_reason": "Not ready for execution today.",
    "rating": "Hold",
@@ -23670,10 +23686,14 @@
    "decision_id": "2026-10-01|SPCX|119abd07f068",
    "five_day_return": null,
    "holding_days": 5,
-   "horizon_alphas": {},
-   "horizon_returns": {},
+   "horizon_alphas": {
+    "1": 0.066151
+   },
+   "horizon_returns": {
+    "1": 0.073546
+   },
    "market_regime": "中性震荡",
-   "outcome_status": "pending",
+   "outcome_status": "unresolved",
    "portfolio_decision": "watchlist",
    "portfolio_reason": "Not ready for execution today.",
    "rating": "Hold",
@@ -23707,10 +23727,14 @@
    "decision_id": "2026-10-01|NOK|d5669c8cc8f7",
    "five_day_return": null,
    "holding_days": 5,
-   "horizon_alphas": {},
-   "horizon_returns": {},
+   "horizon_alphas": {
+    "1": 0.014784
+   },
+   "horizon_returns": {
+    "1": 0.022179
+   },
    "market_regime": "中性震荡",
-   "outcome_status": "pending",
+   "outcome_status": "unresolved",
    "portfolio_decision": "watchlist",
    "portfolio_reason": "Not ready for execution today.",
    "rating": "Hold",
@@ -23742,10 +23766,14 @@
    "decision_id": "2026-10-01|TSLA|210e324be72c",
    "five_day_return": null,
    "holding_days": 5,
-   "horizon_alphas": {},
-   "horizon_returns": {},
+   "horizon_alphas": {
+    "1": 0.039144
+   },
+   "horizon_returns": {
+    "1": 0.046539
+   },
    "market_regime": "中性震荡",
-   "outcome_status": "pending",
+   "outcome_status": "unresolved",
    "portfolio_decision": "risk_action",
    "portfolio_reason": "de-risk recorded exposure; avoid adding fresh risk.",
    "rating": "Underweight",
@@ -24780,6 +24808,263 @@
    "symbol": "TSLA",
    "trade_plan_summary": {
     "entry_zone": "Observation only. No fresh size yet.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "stop": "NA",
+    "targets": "NA"
+   }
+  },
+  {
+   "action": "WATCH",
+   "alpha_vs_spy": null,
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "Implied volatility is elevated, pointing to heavier event risk."
+   ],
+   "bull_case": [
+    "RSI remains in a healthy range without obvious overheating."
+   ],
+   "conviction_level": "low",
+   "date": "2026-10-06",
+   "decision_balance": "mixed",
+   "decision_id": "2026-10-06|INTC|540bf091fcce",
+   "five_day_return": null,
+   "holding_days": 5,
+   "horizon_alphas": {},
+   "horizon_returns": {},
+   "market_regime": "中性震荡",
+   "outcome_status": "pending",
+   "portfolio_decision": "watchlist",
+   "portfolio_reason": "Not ready for execution today.",
+   "rating": "Hold",
+   "raw_score": 64.0,
+   "rejection_reasons": [],
+   "score": 64,
+   "setup_type": "hold_watch",
+   "signal_hash": "540bf091fcce",
+   "symbol": "INTC",
+   "trade_plan_summary": {
+    "entry_zone": "Observation only. No fresh size yet.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "stop": "NA",
+    "targets": "NA"
+   }
+  },
+  {
+   "action": "WATCH",
+   "alpha_vs_spy": null,
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "Implied volatility is elevated, pointing to heavier event risk."
+   ],
+   "bull_case": [
+    "RSI remains in a healthy range without obvious overheating."
+   ],
+   "conviction_level": "low",
+   "date": "2026-10-06",
+   "decision_balance": "mixed",
+   "decision_id": "2026-10-06|MU|77271a6d49ac",
+   "five_day_return": null,
+   "holding_days": 5,
+   "horizon_alphas": {},
+   "horizon_returns": {},
+   "market_regime": "中性震荡",
+   "outcome_status": "pending",
+   "portfolio_decision": "watchlist",
+   "portfolio_reason": "Not ready for execution today.",
+   "rating": "Hold",
+   "raw_score": 62.0,
+   "rejection_reasons": [],
+   "score": 62,
+   "setup_type": "hold_watch",
+   "signal_hash": "77271a6d49ac",
+   "symbol": "MU",
+   "trade_plan_summary": {
+    "entry_zone": "Observation only. No fresh size yet.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "stop": "NA",
+    "targets": "NA"
+   }
+  },
+  {
+   "action": "WATCH",
+   "alpha_vs_spy": null,
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "Put/Call volume is elevated and options sentiment is cautious."
+   ],
+   "bull_case": [
+    "RSI remains in a healthy range without obvious overheating."
+   ],
+   "conviction_level": "low",
+   "date": "2026-10-06",
+   "decision_balance": "mixed",
+   "decision_id": "2026-10-06|QQQ|0d2456de599b",
+   "five_day_return": null,
+   "holding_days": 5,
+   "horizon_alphas": {},
+   "horizon_returns": {},
+   "market_regime": "中性震荡",
+   "outcome_status": "pending",
+   "portfolio_decision": "watchlist",
+   "portfolio_reason": "Not ready for execution today.",
+   "rating": "Hold",
+   "raw_score": 61.0,
+   "rejection_reasons": [],
+   "score": 61,
+   "setup_type": "hold_watch",
+   "signal_hash": "0d2456de599b",
+   "symbol": "QQQ",
+   "trade_plan_summary": {
+    "entry_zone": "Observation only. No fresh size yet.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "stop": "NA",
+    "targets": "NA"
+   }
+  },
+  {
+   "action": "WATCH",
+   "alpha_vs_spy": null,
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "MACD has rolled under the signal line and momentum is softer."
+   ],
+   "bull_case": [
+    "RSI remains in a healthy range without obvious overheating."
+   ],
+   "conviction_level": "low",
+   "date": "2026-10-06",
+   "decision_balance": "mixed",
+   "decision_id": "2026-10-06|TSLA|fd4afd0f8d74",
+   "five_day_return": null,
+   "holding_days": 5,
+   "horizon_alphas": {},
+   "horizon_returns": {},
+   "market_regime": "中性震荡",
+   "outcome_status": "pending",
+   "portfolio_decision": "watchlist",
+   "portfolio_reason": "Not ready for execution today.",
+   "rating": "Hold",
+   "raw_score": 59.0,
+   "rejection_reasons": [],
+   "score": 59,
+   "setup_type": "hold_watch",
+   "signal_hash": "fd4afd0f8d74",
+   "symbol": "TSLA",
+   "trade_plan_summary": {
+    "entry_zone": "Observation only. No fresh size yet.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "stop": "NA",
+    "targets": "NA"
+   }
+  },
+  {
+   "action": "WATCH",
+   "alpha_vs_spy": null,
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "MACD has rolled under the signal line and momentum is softer."
+   ],
+   "bull_case": [
+    "RSI remains in a healthy range without obvious overheating."
+   ],
+   "conviction_level": "low",
+   "date": "2026-10-06",
+   "decision_balance": "mixed",
+   "decision_id": "2026-10-06|SPCX|09ff0a36551e",
+   "five_day_return": null,
+   "holding_days": 5,
+   "horizon_alphas": {},
+   "horizon_returns": {},
+   "market_regime": "中性震荡",
+   "outcome_status": "pending",
+   "portfolio_decision": "watchlist",
+   "portfolio_reason": "Not ready for execution today.",
+   "rating": "Hold",
+   "raw_score": 59.0,
+   "rejection_reasons": [],
+   "score": 59,
+   "setup_type": "hold_watch",
+   "signal_hash": "09ff0a36551e",
+   "symbol": "SPCX",
+   "trade_plan_summary": {
+    "entry_zone": "Observation only. No fresh size yet.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "stop": "NA",
+    "targets": "NA"
+   }
+  },
+  {
+   "action": "WATCH",
+   "alpha_vs_spy": null,
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "Volume is below average and the breakout confirmation is weak."
+   ],
+   "bull_case": [
+    "ADX is above 25 with +DI leading, which supports trend persistence."
+   ],
+   "conviction_level": "low",
+   "date": "2026-10-06",
+   "decision_balance": "mixed",
+   "decision_id": "2026-10-06|AMD|5713cfea2bde",
+   "five_day_return": null,
+   "holding_days": 5,
+   "horizon_alphas": {},
+   "horizon_returns": {},
+   "market_regime": "中性震荡",
+   "outcome_status": "pending",
+   "portfolio_decision": "watchlist",
+   "portfolio_reason": "Not ready for execution today.",
+   "rating": "Hold",
+   "raw_score": 58.0,
+   "rejection_reasons": [],
+   "score": 58,
+   "setup_type": "hold_watch",
+   "signal_hash": "5713cfea2bde",
+   "symbol": "AMD",
+   "trade_plan_summary": {
+    "entry_zone": "Observation only. No fresh size yet.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "stop": "NA",
+    "targets": "NA"
+   }
+  },
+  {
+   "action": "RISK_REDUCE",
+   "alpha_vs_spy": null,
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "MACD has rolled under the signal line and momentum is softer."
+   ],
+   "bull_case": [],
+   "conviction_level": "medium",
+   "date": "2026-10-06",
+   "decision_balance": "defensive",
+   "decision_id": "2026-10-06|NOK|df7254b1a3f0",
+   "five_day_return": null,
+   "holding_days": 5,
+   "horizon_alphas": {},
+   "horizon_returns": {},
+   "market_regime": "中性震荡",
+   "outcome_status": "pending",
+   "portfolio_decision": "risk_action",
+   "portfolio_reason": "Monitor-only risk signal because no open position is recorded.",
+   "rating": "Underweight",
+   "raw_score": 38.0,
+   "rejection_reasons": [],
+   "score": 38,
+   "setup_type": "risk_reduce",
+   "signal_hash": "df7254b1a3f0",
+   "symbol": "NOK",
+   "trade_plan_summary": {
+    "entry_zone": "Risk management only.",
     "max_loss_pct": 0.0,
     "position_pct": 0.0,
     "stop": "NA",
