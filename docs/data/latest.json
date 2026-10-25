@@ -1,31 +1,29 @@
 {
- "date": "2026-10-25",
- "dual_time": "Sydney 2026-10-25 09:41 / US Eastern 2026-10-24 18:41",
- "generated_at": "2026-10-25T09:41:19.999734+11:00",
+ "date": "2026-10-26",
+ "dual_time": "Sydney 2026-10-26 09:45 / US Eastern 2026-10-25 18:45",
+ "generated_at": "2026-10-26T09:45:48.641402+11:00",
  "market": {
   "label": "中性震荡",
   "reasons": [
    "VIX 未进入高压区，风险偏好尚可"
   ],
   "risks": [
-   "SMH 市场过滤数据不足"
+   "SPY 市场过滤数据不足",
+   "QQQ 市场过滤数据不足"
   ],
-  "score": 1.52,
+  "score": 3.0,
   "snapshots": {
    "QQQ": {
-    "last": 704.400024,
-    "perf20": -5.386162,
-    "sma20": 735.235004,
-    "sma50": 725.440166
-   },
-   "SMH": {
     "status": null
    },
+   "SMH": {
+    "last": 527.200012,
+    "perf20": -13.083617,
+    "sma20": 585.545004,
+    "sma50": 575.091602
+   },
    "SPY": {
-    "last": 759.969971,
-    "perf20": -1.475336,
-    "sma20": 770.150497,
-    "sma50": 766.898204
+    "status": null
    },
    "^VIX": {
     "last": 19.450001,
@@ -61,7 +59,7 @@
    "action": "WATCH",
    "bear_case": [
     "MACD has rolled under the signal line and momentum is softer.",
-    "Revenue growth is negative and the fundamental impulse needs more proof."
+    "Implied volatility is elevated, pointing to heavier event risk."
    ],
    "bull_case": [
     "Short moving averages are stacked higher, supporting a trend-following bias."
@@ -70,14 +68,14 @@
     "base": 35.0,
     "discipline": 3.0,
     "event_risk": 0.0,
-    "market_environment": 1.52,
+    "market_environment": 3.0,
     "momentum": 4.0,
-    "news_sentiment": 2.0,
+    "news_sentiment": 10.0,
     "relative_strength_broad": 0.0,
     "relative_strength_sector": 0.0,
     "sector_resonance": 0.0,
     "trend": 28.0,
-    "volatility_options": 5.0,
+    "volatility_options": -3.0,
     "volume": 0.0
    },
    "conviction_level": "low",
@@ -96,7 +94,7 @@
      "source": "technical",
      "text": "Short moving averages are stacked higher, supporting a trend-following bias.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -111,7 +109,7 @@
      "source": "technical",
      "text": "Price remains above SMA20 and SMA50, keeping the intermediate trend constructive.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -126,7 +124,7 @@
      "source": "technical",
      "text": "MACD has rolled under the signal line and momentum is softer.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -141,23 +139,8 @@
      "source": "technical",
      "text": "RSI remains in a healthy range without obvious overheating.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 51.52
-    },
-    {
-     "code": "RS_BROAD_NEUTRAL",
-     "component": "relative_strength_broad",
-     "confidence": null,
-     "evidence_id": "0ecd38043b3f",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": 0.0,
-     "polarity": "info",
-     "source": "technical",
-     "text": "20-session performance is roughly in line with SPY.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.5
     },
     {
      "code": "VOLOPT_BASELINE",
@@ -171,8 +154,38 @@
      "source": "technical",
      "text": "Volatility/options baseline.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
+    },
+    {
+     "code": "OPT_IV_HIGH",
+     "component": "volatility_options",
+     "confidence": null,
+     "evidence_id": "3cc2321c704d",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-25T22:45:49.913166+00:00",
+     "points": -8,
+     "polarity": "risk",
+     "source": "options",
+     "text": "Implied volatility is elevated, pointing to heavier event risk.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 0.83
+    },
+    {
+     "code": "NEWS_SENT_POSITIVE",
+     "component": "news_sentiment",
+     "confidence": null,
+     "evidence_id": "118207edc49e",
+     "method": "deterministic_rule",
+     "observed_at": null,
+     "points": 8,
+     "polarity": "reason",
+     "source": "news",
+     "text": "Headline and social sentiment remain constructive.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 0.167
     },
     {
      "code": "NEWS_COVERAGE",
@@ -186,7 +199,7 @@
      "source": "news",
      "text": "Recent news coverage exists.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 8
     },
     {
@@ -201,7 +214,7 @@
      "source": "technical",
      "text": "Price is still close to MA10, which keeps the pullback support clearer.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 0.26
     },
     {
@@ -210,13 +223,13 @@
      "confidence": null,
      "evidence_id": "3c9bf41fcac4",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.663583+00:00",
+     "observed_at": "2026-10-25T22:45:49.733120+00:00",
      "points": 4,
      "polarity": "info",
      "source": "fundamental",
      "text": "Street consensus leans buy.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": "buy"
     },
     {
@@ -225,29 +238,29 @@
      "confidence": null,
      "evidence_id": "2c536a41cb2a",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.663583+00:00",
+     "observed_at": "2026-10-25T22:45:49.733120+00:00",
      "points": -4,
      "polarity": "risk",
      "source": "fundamental",
      "text": "Revenue growth is negative and the fundamental impulse needs more proof.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": -0.002
     },
     {
      "code": "MARKET_ENV_SCORE",
      "component": "market_environment",
      "confidence": null,
-     "evidence_id": "f42ff06d68a1",
+     "evidence_id": "9af2a5fb11dc",
      "method": "deterministic_rule",
      "observed_at": null,
-     "points": 1.52,
+     "points": 3.0,
      "polarity": "info",
      "source": "market",
      "text": "Market-environment score (clipped).",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.52
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 3.0
     },
     {
      "code": "BASE_SCORE",
@@ -261,7 +274,7 @@
      "source": "technical",
      "text": "Base score.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     }
    ],
@@ -290,18 +303,20 @@
    "position_context": "open position, 35.84%, 3 shares, cost $383.89",
    "rank": 1,
    "rating": "Hold",
-   "raw_score": 78.52,
+   "raw_score": 80.0,
    "reasons": [
     "Short moving averages are stacked higher, supporting a trend-following bias.",
     "Price remains above SMA20 and SMA50, keeping the intermediate trend constructive.",
     "RSI remains in a healthy range without obvious overheating.",
+    "Headline and social sentiment remain constructive.",
     "Price is still close to MA10, which keeps the pullback support clearer."
    ],
    "risks": [
     "MACD has rolled under the signal line and momentum is softer.",
+    "Implied volatility is elevated, pointing to heavier event risk.",
     "Revenue growth is negative and the fundamental impulse needs more proof."
    ],
-   "score": 79,
+   "score": 80,
    "setup_type": "hold_watch",
    "signal_type": "持有观察",
    "suggested_posture": "hold-context",
@@ -320,14 +335,14 @@
     "base": 35.0,
     "discipline": 0.0,
     "event_risk": 4.0,
-    "market_environment": 1.52,
+    "market_environment": 3.0,
     "momentum": 4.0,
     "news_sentiment": 2.0,
     "relative_strength_broad": 0.0,
     "relative_strength_sector": 0.0,
     "sector_resonance": 0.0,
     "trend": -8.0,
-    "volatility_options": 1.0,
+    "volatility_options": -3.0,
     "volume": 0.0
    },
    "conviction_level": "medium",
@@ -346,7 +361,7 @@
      "source": "technical",
      "text": "Price has slipped back below SMA20 and trend persistence is weakening.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -361,7 +376,7 @@
      "source": "technical",
      "text": "MACD has rolled under the signal line and momentum is softer.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -376,23 +391,8 @@
      "source": "technical",
      "text": "RSI remains in a healthy range without obvious overheating.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 46.35
-    },
-    {
-     "code": "RS_BROAD_NEUTRAL",
-     "component": "relative_strength_broad",
-     "confidence": null,
-     "evidence_id": "8af1b48294c3",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": 0.0,
-     "polarity": "info",
-     "source": "technical",
-     "text": "20-session performance is roughly in line with SPY.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 0.67
     },
     {
      "code": "VOLOPT_BASELINE",
@@ -406,44 +406,29 @@
      "source": "technical",
      "text": "Volatility/options baseline.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
      "code": "OPT_IV_HIGH",
      "component": "volatility_options",
      "confidence": null,
-     "evidence_id": "9b85cce36f07",
+     "evidence_id": "31ebac5034ba",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:26.998243+00:00",
+     "observed_at": "2026-10-25T22:45:53.794671+00:00",
      "points": -8,
      "polarity": "risk",
      "source": "options",
      "text": "Implied volatility is elevated, pointing to heavier event risk.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 0.689
-    },
-    {
-     "code": "OPT_PC_SUPPORTIVE",
-     "component": "volatility_options",
-     "confidence": null,
-     "evidence_id": "5b62c43de266",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:26.998243+00:00",
-     "points": 4,
-     "polarity": "reason",
-     "source": "options",
-     "text": "Put/Call volume is supportive of a more constructive bias.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 0.66
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 1.008
     },
     {
      "code": "NEWS_COVERAGE",
      "component": "news_sentiment",
      "confidence": null,
-     "evidence_id": "665a5a4ff9de",
+     "evidence_id": "9bd7c4de1b9f",
      "method": "deterministic_rule",
      "observed_at": null,
      "points": 2,
@@ -451,8 +436,8 @@
      "source": "news",
      "text": "Recent news coverage exists.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 8
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 7
     },
     {
      "code": "FUND_RECO_BUY",
@@ -460,29 +445,29 @@
      "confidence": null,
      "evidence_id": "3c9bf41fcac4",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:26.746689+00:00",
+     "observed_at": "2026-10-25T22:45:53.431324+00:00",
      "points": 4,
      "polarity": "info",
      "source": "fundamental",
      "text": "Street consensus leans buy.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": "buy"
     },
     {
      "code": "MARKET_ENV_SCORE",
      "component": "market_environment",
      "confidence": null,
-     "evidence_id": "f42ff06d68a1",
+     "evidence_id": "9af2a5fb11dc",
      "method": "deterministic_rule",
      "observed_at": null,
-     "points": 1.52,
+     "points": 3.0,
      "polarity": "info",
      "source": "market",
      "text": "Market-environment score (clipped).",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.52
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 3.0
     },
     {
      "code": "BASE_SCORE",
@@ -496,7 +481,7 @@
      "source": "technical",
      "text": "Base score.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     }
    ],
@@ -525,17 +510,16 @@
    "position_context": "No open position.",
    "rank": 2,
    "rating": "Underweight",
-   "raw_score": 39.52,
+   "raw_score": 37.0,
    "reasons": [
-    "RSI remains in a healthy range without obvious overheating.",
-    "Put/Call volume is supportive of a more constructive bias."
+    "RSI remains in a healthy range without obvious overheating."
    ],
    "risks": [
     "Price has slipped back below SMA20 and trend persistence is weakening.",
     "MACD has rolled under the signal line and momentum is softer.",
     "Implied volatility is elevated, pointing to heavier event risk."
    ],
-   "score": 40,
+   "score": 37,
    "setup_type": "risk_reduce",
    "signal_type": "减仓/风险升高",
    "suggested_posture": "monitor-only",
@@ -553,265 +537,15 @@
    "contributions": {
     "base": 35.0,
     "discipline": 0.0,
-    "event_risk": 4.0,
-    "market_environment": 1.52,
-    "momentum": -16.0,
-    "news_sentiment": 2.0,
-    "relative_strength_broad": -6.0,
-    "relative_strength_sector": 0.0,
-    "sector_resonance": 0.0,
-    "trend": 0.0,
-    "volatility_options": 9.0,
-    "volume": 0.0
-   },
-   "conviction_level": "medium",
-   "data_quality_level": "HIGH",
-   "decision_balance": "defensive",
-   "evidence": [
-    {
-     "code": "TREND_BELOW_SMA20",
-     "component": "trend",
-     "confidence": null,
-     "evidence_id": "dfb9e9ab8571",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -8,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "Price has slipped back below SMA20 and trend persistence is weakening.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": null
-    },
-    {
-     "code": "TREND_ABOVE_SMA200",
-     "component": "trend",
-     "confidence": null,
-     "evidence_id": "531953c628b6",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": 8,
-     "polarity": "reason",
-     "source": "technical",
-     "text": "Price is still above SMA200, keeping the long-term structure supportive.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": null
-    },
-    {
-     "code": "MOM_MACD_BELOW_SIGNAL",
-     "component": "momentum",
-     "confidence": null,
-     "evidence_id": "1ed390cfce30",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -6,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "MACD has rolled under the signal line and momentum is softer.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": null
-    },
-    {
-     "code": "MOM_RSI_WEAK",
-     "component": "momentum",
-     "confidence": null,
-     "evidence_id": "7b50972c6bfc",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -10,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "RSI is weak, showing limited demand support.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 38.98
-    },
-    {
-     "code": "RS_BROAD_LAG",
-     "component": "relative_strength_broad",
-     "confidence": null,
-     "evidence_id": "1b1fc4fe62e9",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -6,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "AMD is lagging SPY over the last 20 sessions.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": -16.58
-    },
-    {
-     "code": "RS_SECTOR_UNAVAILABLE",
-     "component": "relative_strength_sector",
-     "confidence": null,
-     "evidence_id": "66cc1a8f7d0a",
-     "method": "deterministic_rule",
-     "observed_at": null,
-     "points": null,
-     "polarity": "info",
-     "source": "market",
-     "text": "Sector benchmark SMH data unavailable; no sector-relative scoring.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": null
-    },
-    {
-     "code": "VOLOPT_BASELINE",
-     "component": "volatility_options",
-     "confidence": null,
-     "evidence_id": "78d9ea075a9e",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": 5.0,
-     "polarity": "info",
-     "source": "technical",
-     "text": "Volatility/options baseline.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": null
-    },
-    {
-     "code": "OPT_PC_SUPPORTIVE",
-     "component": "volatility_options",
-     "confidence": null,
-     "evidence_id": "f2f611ff6f48",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.792834+00:00",
-     "points": 4,
-     "polarity": "reason",
-     "source": "options",
-     "text": "Put/Call volume is supportive of a more constructive bias.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 0.6
-    },
-    {
-     "code": "NEWS_COVERAGE",
-     "component": "news_sentiment",
-     "confidence": null,
-     "evidence_id": "665a5a4ff9de",
-     "method": "deterministic_rule",
-     "observed_at": null,
-     "points": 2,
-     "polarity": "info",
-     "source": "news",
-     "text": "Recent news coverage exists.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 8
-    },
-    {
-     "code": "FUND_RECO_BUY",
-     "component": "event_risk",
-     "confidence": null,
-     "evidence_id": "f823ae828d1e",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.544942+00:00",
-     "points": 4,
-     "polarity": "info",
-     "source": "fundamental",
-     "text": "Street consensus leans buy.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": "strong_buy"
-    },
-    {
-     "code": "MARKET_ENV_SCORE",
-     "component": "market_environment",
-     "confidence": null,
-     "evidence_id": "f42ff06d68a1",
-     "method": "deterministic_rule",
-     "observed_at": null,
-     "points": 1.52,
-     "polarity": "info",
-     "source": "market",
-     "text": "Market-environment score (clipped).",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.52
-    },
-    {
-     "code": "BASE_SCORE",
-     "component": "base",
-     "confidence": null,
-     "evidence_id": "13397f87dccf",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": 35.0,
-     "polarity": "info",
-     "source": "technical",
-     "text": "Base score.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": null
-    }
-   ],
-   "is_actionable": false,
-   "last_price": 516.789978,
-   "market_evidence": [
-    "VIX 未进入高压区，风险偏好尚可"
-   ],
-   "plan": {
-    "cancel": "Trend repairs and conviction improves again.",
-    "entry_high": null,
-    "entry_low": null,
-    "entry_zone": "Risk management only.",
-    "max_loss_pct": 0.0,
-    "position_pct": 0.0,
-    "rr": 0.0,
-    "stop": "NA",
-    "stop_price": null,
-    "target1": null,
-    "target2": null,
-    "targets": "NA",
-    "trigger": "Reduce exposure and avoid adding fresh size."
-   },
-   "portfolio_decision": "risk_action",
-   "portfolio_reason": "Monitor-only risk signal because no open position is recorded.",
-   "position_context": "No open position.",
-   "rank": 3,
-   "rating": "Underweight",
-   "raw_score": 29.52,
-   "reasons": [
-    "Price is still above SMA200, keeping the long-term structure supportive.",
-    "Put/Call volume is supportive of a more constructive bias."
-   ],
-   "risks": [
-    "Price has slipped back below SMA20 and trend persistence is weakening.",
-    "MACD has rolled under the signal line and momentum is softer.",
-    "RSI is weak, showing limited demand support.",
-    "AMD is lagging SPY over the last 20 sessions."
-   ],
-   "score": 30,
-   "setup_type": "risk_reduce",
-   "signal_type": "减仓/风险升高",
-   "suggested_posture": "monitor-only",
-   "suppressed_by": [],
-   "symbol": "AMD",
-   "validation_warnings": []
-  },
-  {
-   "action": "RISK_REDUCE",
-   "bear_case": [
-    "Price has slipped back below SMA20 and trend persistence is weakening.",
-    "MACD has rolled under the signal line and momentum is softer."
-   ],
-   "bull_case": [],
-   "contributions": {
-    "base": 35.0,
-    "discipline": 0.0,
     "event_risk": 0.0,
-    "market_environment": 1.52,
+    "market_environment": 3.0,
     "momentum": -16.0,
     "news_sentiment": 2.0,
-    "relative_strength_broad": -6.0,
+    "relative_strength_broad": 0.0,
     "relative_strength_sector": 0.0,
     "sector_resonance": 0.0,
     "trend": 0.0,
-    "volatility_options": 8.0,
+    "volatility_options": 5.0,
     "volume": 0.0
    },
    "conviction_level": "medium",
@@ -830,7 +564,7 @@
      "source": "technical",
      "text": "Price has slipped back below SMA20 and trend persistence is weakening.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -845,7 +579,7 @@
      "source": "technical",
      "text": "Price is still above SMA200, keeping the long-term structure supportive.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -860,7 +594,7 @@
      "source": "technical",
      "text": "MACD has rolled under the signal line and momentum is softer.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -875,23 +609,8 @@
      "source": "technical",
      "text": "RSI is weak, showing limited demand support.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 36.59
-    },
-    {
-     "code": "RS_BROAD_LAG",
-     "component": "relative_strength_broad",
-     "confidence": null,
-     "evidence_id": "5e3e66c20582",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -6,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "QQQ is lagging SPY over the last 20 sessions.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": -3.91
     },
     {
      "code": "VOLOPT_BASELINE",
@@ -905,23 +624,8 @@
      "source": "technical",
      "text": "Volatility/options baseline.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
-    },
-    {
-     "code": "OPT_IV_LOW",
-     "component": "volatility_options",
-     "confidence": null,
-     "evidence_id": "221591c4d09a",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.409085+00:00",
-     "points": 3,
-     "polarity": "info",
-     "source": "options",
-     "text": "Implied volatility is subdued.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 0.328
     },
     {
      "code": "NEWS_COVERAGE",
@@ -935,23 +639,23 @@
      "source": "news",
      "text": "Recent news coverage exists.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 7
     },
     {
      "code": "MARKET_ENV_SCORE",
      "component": "market_environment",
      "confidence": null,
-     "evidence_id": "f42ff06d68a1",
+     "evidence_id": "9af2a5fb11dc",
      "method": "deterministic_rule",
      "observed_at": null,
-     "points": 1.52,
+     "points": 3.0,
      "polarity": "info",
      "source": "market",
      "text": "Market-environment score (clipped).",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.52
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 3.0
     },
     {
      "code": "BASE_SCORE",
@@ -965,7 +669,7 @@
      "source": "technical",
      "text": "Base score.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     }
    ],
@@ -992,19 +696,18 @@
    "portfolio_decision": "risk_action",
    "portfolio_reason": "trim recorded exposure; avoid adding fresh risk.",
    "position_context": "open position, 2.01%, 0.1001 shares, cost $613.94",
-   "rank": 4,
+   "rank": 3,
    "rating": "Underweight",
-   "raw_score": 24.52,
+   "raw_score": 29.0,
    "reasons": [
     "Price is still above SMA200, keeping the long-term structure supportive."
    ],
    "risks": [
     "Price has slipped back below SMA20 and trend persistence is weakening.",
     "MACD has rolled under the signal line and momentum is softer.",
-    "RSI is weak, showing limited demand support.",
-    "QQQ is lagging SPY over the last 20 sessions."
+    "RSI is weak, showing limited demand support."
    ],
-   "score": 25,
+   "score": 29,
    "setup_type": "risk_reduce",
    "signal_type": "减仓/风险升高",
    "suggested_posture": "trim",
@@ -1023,14 +726,14 @@
     "base": 35.0,
     "discipline": 0.0,
     "event_risk": 4.0,
-    "market_environment": 1.52,
+    "market_environment": 3.0,
     "momentum": -16.0,
     "news_sentiment": 2.0,
-    "relative_strength_broad": -6.0,
-    "relative_strength_sector": 0.0,
+    "relative_strength_broad": 0.0,
+    "relative_strength_sector": -6.0,
     "sector_resonance": 0.0,
     "trend": 0.0,
-    "volatility_options": -3.0,
+    "volatility_options": 1.0,
     "volume": 0.0
    },
    "conviction_level": "medium",
@@ -1049,7 +752,7 @@
      "source": "technical",
      "text": "Price has slipped back below SMA20 and trend persistence is weakening.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1064,7 +767,7 @@
      "source": "technical",
      "text": "Price is still above SMA200, keeping the long-term structure supportive.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1079,14 +782,14 @@
      "source": "technical",
      "text": "MACD has rolled under the signal line and momentum is softer.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
      "code": "MOM_RSI_WEAK",
      "component": "momentum",
      "confidence": null,
-     "evidence_id": "1361679848e5",
+     "evidence_id": "7b50972c6bfc",
      "method": "deterministic_rule",
      "observed_at": "2026-10-23T00:00:00-04:00",
      "points": -10,
@@ -1094,38 +797,23 @@
      "source": "technical",
      "text": "RSI is weak, showing limited demand support.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 38.18
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 38.98
     },
     {
-     "code": "RS_BROAD_LAG",
-     "component": "relative_strength_broad",
-     "confidence": null,
-     "evidence_id": "9d916fa902ec",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -6,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "MU is lagging SPY over the last 20 sessions.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": -17.43
-    },
-    {
-     "code": "RS_SECTOR_UNAVAILABLE",
+     "code": "RS_SECTOR_LAG",
      "component": "relative_strength_sector",
      "confidence": null,
-     "evidence_id": "66cc1a8f7d0a",
+     "evidence_id": "2e98dc2bd30f",
      "method": "deterministic_rule",
      "observed_at": null,
-     "points": null,
-     "polarity": "info",
+     "points": -6,
+     "polarity": "risk",
      "source": "market",
-     "text": "Sector benchmark SMH data unavailable; no sector-relative scoring.",
+     "text": "AMD is lagging its sector benchmark SMH over the last 20 sessions.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": null
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": -4.97
     },
     {
      "code": "VOLOPT_BASELINE",
@@ -1139,23 +827,38 @@
      "source": "technical",
      "text": "Volatility/options baseline.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
      "code": "OPT_IV_HIGH",
      "component": "volatility_options",
      "confidence": null,
-     "evidence_id": "13bd8e858ee2",
+     "evidence_id": "422665497297",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:27.095314+00:00",
+     "observed_at": "2026-10-25T22:45:49.867559+00:00",
      "points": -8,
      "polarity": "risk",
      "source": "options",
      "text": "Implied volatility is elevated, pointing to heavier event risk.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 0.816
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 0.851
+    },
+    {
+     "code": "OPT_PC_SUPPORTIVE",
+     "component": "volatility_options",
+     "confidence": null,
+     "evidence_id": "27d077749660",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-25T22:45:49.867559+00:00",
+     "points": 4,
+     "polarity": "reason",
+     "source": "options",
+     "text": "Put/Call volume is supportive of a more constructive bias.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 0.63
     },
     {
      "code": "NEWS_COVERAGE",
@@ -1169,7 +872,7 @@
      "source": "news",
      "text": "Recent news coverage exists.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 8
     },
     {
@@ -1178,29 +881,29 @@
      "confidence": null,
      "evidence_id": "f823ae828d1e",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:26.836712+00:00",
+     "observed_at": "2026-10-25T22:45:49.664648+00:00",
      "points": 4,
      "polarity": "info",
      "source": "fundamental",
      "text": "Street consensus leans buy.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": "strong_buy"
     },
     {
      "code": "MARKET_ENV_SCORE",
      "component": "market_environment",
      "confidence": null,
-     "evidence_id": "f42ff06d68a1",
+     "evidence_id": "9af2a5fb11dc",
      "method": "deterministic_rule",
      "observed_at": null,
-     "points": 1.52,
+     "points": 3.0,
      "polarity": "info",
      "source": "market",
      "text": "Market-environment score (clipped).",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.52
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 3.0
     },
     {
      "code": "BASE_SCORE",
@@ -1214,12 +917,12 @@
      "source": "technical",
      "text": "Base score.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     }
    ],
    "is_actionable": false,
-   "last_price": 877.549988,
+   "last_price": 516.789978,
    "market_evidence": [
     "VIX 未进入高压区，风险偏好尚可"
    ],
@@ -1241,25 +944,26 @@
    "portfolio_decision": "risk_action",
    "portfolio_reason": "Monitor-only risk signal because no open position is recorded.",
    "position_context": "No open position.",
-   "rank": 5,
+   "rank": 4,
    "rating": "Underweight",
-   "raw_score": 17.52,
+   "raw_score": 23.0,
    "reasons": [
-    "Price is still above SMA200, keeping the long-term structure supportive."
+    "Price is still above SMA200, keeping the long-term structure supportive.",
+    "Put/Call volume is supportive of a more constructive bias."
    ],
    "risks": [
     "Price has slipped back below SMA20 and trend persistence is weakening.",
     "MACD has rolled under the signal line and momentum is softer.",
     "RSI is weak, showing limited demand support.",
-    "MU is lagging SPY over the last 20 sessions.",
+    "AMD is lagging its sector benchmark SMH over the last 20 sessions.",
     "Implied volatility is elevated, pointing to heavier event risk."
    ],
-   "score": 18,
+   "score": 23,
    "setup_type": "risk_reduce",
    "signal_type": "减仓/风险升高",
    "suggested_posture": "monitor-only",
    "suppressed_by": [],
-   "symbol": "MU",
+   "symbol": "AMD",
    "validation_warnings": []
   },
   {
@@ -1273,10 +977,10 @@
     "base": 35.0,
     "discipline": 0.0,
     "event_risk": 4.0,
-    "market_environment": 1.52,
+    "market_environment": 3.0,
     "momentum": -16.0,
     "news_sentiment": 2.0,
-    "relative_strength_broad": -6.0,
+    "relative_strength_broad": 0.0,
     "relative_strength_sector": 0.0,
     "sector_resonance": 0.0,
     "trend": 0.0,
@@ -1299,7 +1003,7 @@
      "source": "technical",
      "text": "Price has slipped back below SMA20 and trend persistence is weakening.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1314,7 +1018,7 @@
      "source": "technical",
      "text": "Price is still above SMA200, keeping the long-term structure supportive.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1329,7 +1033,7 @@
      "source": "technical",
      "text": "MACD has rolled under the signal line and momentum is softer.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1344,23 +1048,8 @@
      "source": "technical",
      "text": "RSI is weak, showing limited demand support.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 32.79
-    },
-    {
-     "code": "RS_BROAD_LAG",
-     "component": "relative_strength_broad",
-     "confidence": null,
-     "evidence_id": "f7176688d7cf",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -6,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "INTC is lagging SPY over the last 20 sessions.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": -27.83
     },
     {
      "code": "VOLOPT_BASELINE",
@@ -1374,7 +1063,7 @@
      "source": "technical",
      "text": "Volatility/options baseline.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1389,38 +1078,38 @@
      "source": "technical",
      "text": "ATR as a percent of price is elevated, so position size should stay tighter.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 6.45
     },
     {
      "code": "OPT_IV_HIGH",
      "component": "volatility_options",
      "confidence": null,
-     "evidence_id": "6b9d2119091b",
+     "evidence_id": "a0d11e3e6eb0",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:27.220556+00:00",
+     "observed_at": "2026-10-25T22:45:54.302930+00:00",
      "points": -8,
      "polarity": "risk",
      "source": "options",
      "text": "Implied volatility is elevated, pointing to heavier event risk.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.205
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 1.185
     },
     {
      "code": "OPT_PC_SUPPORTIVE",
      "component": "volatility_options",
      "confidence": null,
-     "evidence_id": "03bbcc357021",
+     "evidence_id": "ee98156d441f",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:27.220556+00:00",
+     "observed_at": "2026-10-25T22:45:54.302930+00:00",
      "points": 4,
      "polarity": "reason",
      "source": "options",
      "text": "Put/Call volume is supportive of a more constructive bias.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 0.34
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 0.4
     },
     {
      "code": "NEWS_COVERAGE",
@@ -1434,7 +1123,7 @@
      "source": "news",
      "text": "Recent news coverage exists.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 8
     },
     {
@@ -1443,29 +1132,29 @@
      "confidence": null,
      "evidence_id": "3c9bf41fcac4",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:26.910692+00:00",
+     "observed_at": "2026-10-25T22:45:54.121499+00:00",
      "points": 4,
      "polarity": "info",
      "source": "fundamental",
      "text": "Street consensus leans buy.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": "buy"
     },
     {
      "code": "MARKET_ENV_SCORE",
      "component": "market_environment",
      "confidence": null,
-     "evidence_id": "f42ff06d68a1",
+     "evidence_id": "9af2a5fb11dc",
      "method": "deterministic_rule",
      "observed_at": null,
-     "points": 1.52,
+     "points": 3.0,
      "polarity": "info",
      "source": "market",
      "text": "Market-environment score (clipped).",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.52
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 3.0
     },
     {
      "code": "BASE_SCORE",
@@ -1479,7 +1168,7 @@
      "source": "technical",
      "text": "Base score.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     }
    ],
@@ -1506,9 +1195,9 @@
    "portfolio_decision": "risk_action",
    "portfolio_reason": "Monitor-only risk signal because no open position is recorded.",
    "position_context": "No open position.",
-   "rank": 6,
+   "rank": 5,
    "rating": "Underweight",
-   "raw_score": 15.52,
+   "raw_score": 23.0,
    "reasons": [
     "Price is still above SMA200, keeping the long-term structure supportive.",
     "Put/Call volume is supportive of a more constructive bias."
@@ -1517,11 +1206,10 @@
     "Price has slipped back below SMA20 and trend persistence is weakening.",
     "MACD has rolled under the signal line and momentum is softer.",
     "RSI is weak, showing limited demand support.",
-    "INTC is lagging SPY over the last 20 sessions.",
     "ATR as a percent of price is elevated, so position size should stay tighter.",
     "Implied volatility is elevated, pointing to heavier event risk."
    ],
-   "score": 16,
+   "score": 23,
    "setup_type": "risk_reduce",
    "signal_type": "减仓/风险升高",
    "suggested_posture": "monitor-only",
@@ -1540,10 +1228,10 @@
     "base": 35.0,
     "discipline": 0.0,
     "event_risk": 4.0,
-    "market_environment": 1.52,
+    "market_environment": 3.0,
     "momentum": -16.0,
     "news_sentiment": 2.0,
-    "relative_strength_broad": -6.0,
+    "relative_strength_broad": 0.0,
     "relative_strength_sector": 0.0,
     "sector_resonance": 0.0,
     "trend": -8.0,
@@ -1566,7 +1254,7 @@
      "source": "technical",
      "text": "Price has slipped back below SMA20 and trend persistence is weakening.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1581,7 +1269,7 @@
      "source": "technical",
      "text": "MACD has rolled under the signal line and momentum is softer.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1596,23 +1284,8 @@
      "source": "technical",
      "text": "RSI is weak, showing limited demand support.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 33.08
-    },
-    {
-     "code": "RS_BROAD_LAG",
-     "component": "relative_strength_broad",
-     "confidence": null,
-     "evidence_id": "a2053566078a",
-     "method": "deterministic_rule",
-     "observed_at": "2026-10-23T00:00:00-04:00",
-     "points": -6,
-     "polarity": "risk",
-     "source": "technical",
-     "text": "NOK is lagging SPY over the last 20 sessions.",
-     "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": -20.18
     },
     {
      "code": "VOL_MODEST",
@@ -1626,7 +1299,7 @@
      "source": "technical",
      "text": "Volume is modestly above average.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 1.1
     },
     {
@@ -1641,7 +1314,7 @@
      "source": "technical",
      "text": "Volatility/options baseline.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     },
     {
@@ -1656,23 +1329,23 @@
      "source": "technical",
      "text": "ATR as a percent of price is elevated, so position size should stay tighter.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 6.39
     },
     {
      "code": "OPT_IV_HIGH",
      "component": "volatility_options",
      "confidence": null,
-     "evidence_id": "86705d1ada16",
+     "evidence_id": "19b4f3edcf56",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.876842+00:00",
+     "observed_at": "2026-10-25T22:45:49.932608+00:00",
      "points": -8,
      "polarity": "risk",
      "source": "options",
      "text": "Implied volatility is elevated, pointing to heavier event risk.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.68
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 1.867
     },
     {
      "code": "OPT_PC_SUPPORTIVE",
@@ -1680,20 +1353,20 @@
      "confidence": null,
      "evidence_id": "48eec26fe0f2",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.876842+00:00",
+     "observed_at": "2026-10-25T22:45:49.932608+00:00",
      "points": 4,
      "polarity": "reason",
      "source": "options",
      "text": "Put/Call volume is supportive of a more constructive bias.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": 0.33
     },
     {
      "code": "NEWS_COVERAGE",
      "component": "news_sentiment",
      "confidence": null,
-     "evidence_id": "9bd7c4de1b9f",
+     "evidence_id": "f814b0150468",
      "method": "deterministic_rule",
      "observed_at": null,
      "points": 2,
@@ -1701,8 +1374,8 @@
      "source": "news",
      "text": "Recent news coverage exists.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 7
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 6
     },
     {
      "code": "FUND_RECO_BUY",
@@ -1710,29 +1383,29 @@
      "confidence": null,
      "evidence_id": "3c9bf41fcac4",
      "method": "deterministic_rule",
-     "observed_at": "2026-10-24T22:41:21.640640+00:00",
+     "observed_at": "2026-10-25T22:45:49.714805+00:00",
      "points": 4,
      "polarity": "info",
      "source": "fundamental",
      "text": "Street consensus leans buy.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": "buy"
     },
     {
      "code": "MARKET_ENV_SCORE",
      "component": "market_environment",
      "confidence": null,
-     "evidence_id": "f42ff06d68a1",
+     "evidence_id": "9af2a5fb11dc",
      "method": "deterministic_rule",
      "observed_at": null,
-     "points": 1.52,
+     "points": 3.0,
      "polarity": "info",
      "source": "market",
      "text": "Market-environment score (clipped).",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
-     "value": 1.52
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 3.0
     },
     {
      "code": "BASE_SCORE",
@@ -1746,7 +1419,7 @@
      "source": "technical",
      "text": "Base score.",
      "threshold": null,
-     "timestamp": "2026-10-25T09:41:19.999734+11:00",
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
      "value": null
     }
    ],
@@ -1773,9 +1446,9 @@
    "portfolio_decision": "risk_action",
    "portfolio_reason": "Monitor-only risk signal because no open position is recorded.",
    "position_context": "No open position.",
-   "rank": 7,
+   "rank": 6,
    "rating": "Underweight",
-   "raw_score": 12.52,
+   "raw_score": 20.0,
    "reasons": [
     "Volume is modestly above average.",
     "Put/Call volume is supportive of a more constructive bias."
@@ -1784,16 +1457,250 @@
     "Price has slipped back below SMA20 and trend persistence is weakening.",
     "MACD has rolled under the signal line and momentum is softer.",
     "RSI is weak, showing limited demand support.",
-    "NOK is lagging SPY over the last 20 sessions.",
     "ATR as a percent of price is elevated, so position size should stay tighter.",
     "Implied volatility is elevated, pointing to heavier event risk."
    ],
-   "score": 13,
+   "score": 20,
    "setup_type": "risk_reduce",
    "signal_type": "减仓/风险升高",
    "suggested_posture": "monitor-only",
    "suppressed_by": [],
    "symbol": "NOK",
+   "validation_warnings": []
+  },
+  {
+   "action": "RISK_REDUCE",
+   "bear_case": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "MACD has rolled under the signal line and momentum is softer."
+   ],
+   "bull_case": [],
+   "contributions": {
+    "base": 35.0,
+    "discipline": 0.0,
+    "event_risk": 4.0,
+    "market_environment": 3.0,
+    "momentum": -16.0,
+    "news_sentiment": 2.0,
+    "relative_strength_broad": 0.0,
+    "relative_strength_sector": -6.0,
+    "sector_resonance": 0.0,
+    "trend": 0.0,
+    "volatility_options": -3.0,
+    "volume": 0.0
+   },
+   "conviction_level": "medium",
+   "data_quality_level": "HIGH",
+   "decision_balance": "defensive",
+   "evidence": [
+    {
+     "code": "TREND_BELOW_SMA20",
+     "component": "trend",
+     "confidence": null,
+     "evidence_id": "dfb9e9ab8571",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-23T00:00:00-04:00",
+     "points": -8,
+     "polarity": "risk",
+     "source": "technical",
+     "text": "Price has slipped back below SMA20 and trend persistence is weakening.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": null
+    },
+    {
+     "code": "TREND_ABOVE_SMA200",
+     "component": "trend",
+     "confidence": null,
+     "evidence_id": "531953c628b6",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-23T00:00:00-04:00",
+     "points": 8,
+     "polarity": "reason",
+     "source": "technical",
+     "text": "Price is still above SMA200, keeping the long-term structure supportive.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": null
+    },
+    {
+     "code": "MOM_MACD_BELOW_SIGNAL",
+     "component": "momentum",
+     "confidence": null,
+     "evidence_id": "1ed390cfce30",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-23T00:00:00-04:00",
+     "points": -6,
+     "polarity": "risk",
+     "source": "technical",
+     "text": "MACD has rolled under the signal line and momentum is softer.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": null
+    },
+    {
+     "code": "MOM_RSI_WEAK",
+     "component": "momentum",
+     "confidence": null,
+     "evidence_id": "1361679848e5",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-23T00:00:00-04:00",
+     "points": -10,
+     "polarity": "risk",
+     "source": "technical",
+     "text": "RSI is weak, showing limited demand support.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 38.18
+    },
+    {
+     "code": "RS_SECTOR_LAG",
+     "component": "relative_strength_sector",
+     "confidence": null,
+     "evidence_id": "559ea2b41251",
+     "method": "deterministic_rule",
+     "observed_at": null,
+     "points": -6,
+     "polarity": "risk",
+     "source": "market",
+     "text": "MU is lagging its sector benchmark SMH over the last 20 sessions.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": -5.82
+    },
+    {
+     "code": "VOLOPT_BASELINE",
+     "component": "volatility_options",
+     "confidence": null,
+     "evidence_id": "78d9ea075a9e",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-23T00:00:00-04:00",
+     "points": 5.0,
+     "polarity": "info",
+     "source": "technical",
+     "text": "Volatility/options baseline.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": null
+    },
+    {
+     "code": "OPT_IV_HIGH",
+     "component": "volatility_options",
+     "confidence": null,
+     "evidence_id": "37b2ddde86f2",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-25T22:45:53.893336+00:00",
+     "points": -8,
+     "polarity": "risk",
+     "source": "options",
+     "text": "Implied volatility is elevated, pointing to heavier event risk.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 1.011
+    },
+    {
+     "code": "NEWS_COVERAGE",
+     "component": "news_sentiment",
+     "confidence": null,
+     "evidence_id": "665a5a4ff9de",
+     "method": "deterministic_rule",
+     "observed_at": null,
+     "points": 2,
+     "polarity": "info",
+     "source": "news",
+     "text": "Recent news coverage exists.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 8
+    },
+    {
+     "code": "FUND_RECO_BUY",
+     "component": "event_risk",
+     "confidence": null,
+     "evidence_id": "f823ae828d1e",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-25T22:45:53.583044+00:00",
+     "points": 4,
+     "polarity": "info",
+     "source": "fundamental",
+     "text": "Street consensus leans buy.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": "strong_buy"
+    },
+    {
+     "code": "MARKET_ENV_SCORE",
+     "component": "market_environment",
+     "confidence": null,
+     "evidence_id": "9af2a5fb11dc",
+     "method": "deterministic_rule",
+     "observed_at": null,
+     "points": 3.0,
+     "polarity": "info",
+     "source": "market",
+     "text": "Market-environment score (clipped).",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": 3.0
+    },
+    {
+     "code": "BASE_SCORE",
+     "component": "base",
+     "confidence": null,
+     "evidence_id": "13397f87dccf",
+     "method": "deterministic_rule",
+     "observed_at": "2026-10-23T00:00:00-04:00",
+     "points": 35.0,
+     "polarity": "info",
+     "source": "technical",
+     "text": "Base score.",
+     "threshold": null,
+     "timestamp": "2026-10-26T09:45:48.641402+11:00",
+     "value": null
+    }
+   ],
+   "is_actionable": false,
+   "last_price": 877.549988,
+   "market_evidence": [
+    "VIX 未进入高压区，风险偏好尚可"
+   ],
+   "plan": {
+    "cancel": "Trend repairs and conviction improves again.",
+    "entry_high": null,
+    "entry_low": null,
+    "entry_zone": "Risk management only.",
+    "max_loss_pct": 0.0,
+    "position_pct": 0.0,
+    "rr": 0.0,
+    "stop": "NA",
+    "stop_price": null,
+    "target1": null,
+    "target2": null,
+    "targets": "NA",
+    "trigger": "Reduce exposure and avoid adding fresh size."
+   },
+   "portfolio_decision": "risk_action",
+   "portfolio_reason": "Monitor-only risk signal because no open position is recorded.",
+   "position_context": "No open position.",
+   "rank": 7,
+   "rating": "Underweight",
+   "raw_score": 19.0,
+   "reasons": [
+    "Price is still above SMA200, keeping the long-term structure supportive."
+   ],
+   "risks": [
+    "Price has slipped back below SMA20 and trend persistence is weakening.",
+    "MACD has rolled under the signal line and momentum is softer.",
+    "RSI is weak, showing limited demand support.",
+    "MU is lagging its sector benchmark SMH over the last 20 sessions.",
+    "Implied volatility is elevated, pointing to heavier event risk."
+   ],
+   "score": 19,
+   "setup_type": "risk_reduce",
+   "signal_type": "减仓/风险升高",
+   "suggested_posture": "monitor-only",
+   "suppressed_by": [],
+   "symbol": "MU",
    "validation_warnings": []
   }
  ],
