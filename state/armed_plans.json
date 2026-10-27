@@ -1,4 +1,23 @@
 {
-  "plans": [],
+  "plans": [
+    {
+      "created_date": "2026-10-27",
+      "entry_high": 724.1079,
+      "entry_low": 721.25,
+      "expires_date": "2026-10-29",
+      "max_loss_pct": 0.32,
+      "note": "Approved as the best-ranked mega growth setup within risk budget.",
+      "plan_kind": "buy",
+      "position_pct": 10.0,
+      "score": 65,
+      "setup_type": "breakout_entry",
+      "status": "armed",
+      "stop_price": 699.8154,
+      "symbol": "QQQ",
+      "target1": 756.9743,
+      "target2": 779.8378,
+      "triggered_at": null
+    }
+  ],
   "version": 1
 }
